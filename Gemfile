@@ -11,7 +11,7 @@ gem 'aws-s3'
 gem 'aws-sdk'
 gem 'jquery-rails'
 
-# Gems used only for assets and not required
+# ##Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
