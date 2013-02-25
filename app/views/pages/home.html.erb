@@ -1,0 +1,6 @@
+<%# This page chooses a home page to render based on the user's state #%>
+<% if current_user %>
+  <%= render 'pages/auth_home'%>	
+<% else %>
+	<%= render 'pages/unauth_home'%>
+<% end %>

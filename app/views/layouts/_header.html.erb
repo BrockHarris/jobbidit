@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="<%= root_url%>">JobBidit</a>
+    <ul class="nav pull-right">
+      <% if current_user %>
+        <li><%= link_to "Profile", current_user %></li>
+      	<li><%= link_to "Settings", settings_path, :method => :delete %></li>
+        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Signup", signup_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% flash.each do |key, value| %>
+  <div id="flash" class="alert alert-info msg_format"><%= value %></div>
+<% end %>

@@ -1,0 +1,12 @@
+<h3>Reset Your Password</h3>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= form_tag :action => 'reset' do |f| -%>
+  <%= label_tag :password, 'Password' %>
+  <%= password_field_tag :password, ""%> <br/>
+  
+  <%= label_tag :password_confirmation, 'Confirm' %>
+  <%= password_field_tag :password_confirmation, "" %><br/>
+
+  <%= submit_tag 'Change Password' %>
+<% end -%>
