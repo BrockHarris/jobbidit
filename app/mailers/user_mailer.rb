@@ -1,5 +1,14 @@
 class UserMailer < ActionMailer::Base
   default from: "from@example.com"
+
+  def activation(user)
+    @url  = activate_url(:host => SITE_URL_HOST, :id => user.id, :activation_code => user.activation_code)
+    @user = user
+    mail(
+        :to => ["#{user.email}"],
+        :subject => "JobBidIt: Please activate your new account.")
+  end
+
   # Sets up an email that gives the user instructions on how to reset the
   # password and provides a link to allow the user to reset the password.  
   def forgot(user)

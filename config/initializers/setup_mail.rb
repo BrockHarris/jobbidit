@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {  
   :address              => "smtp.sendgrid.net",  
   :port                 => 587,  
-  :domain               => "truthpage.me",  
-  :user_name            => "truthpage",  
-  :password             => "yiuwOaz9",  
+  :domain               => "jobbidit.heroku.com",  
+  :user_name            => "btharis781",  
+  :password             => "jobbidit",  
   :authentication       => "plain",  
   :enable_starttls_auto => true  
 }  

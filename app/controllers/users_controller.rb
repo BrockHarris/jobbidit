@@ -29,9 +29,42 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
   end
+
+  # Logic to turn on activation email setup #
+  #def create
+    #@user = User.new(params[:user])
+    #if @user.save
+      #@user.register! #set status to pending
+      #@user.send_activation_email!
+      #flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
+      #redirect_to root_url
+    #else
+      #flash[:error] = "There was a problem with your info, please try again."
+      #redirect_to signup_path
+    #end
+  #end
   
   def settings
     @user = current_user
+  end
+
+  def activation
+    #logout_keeping_session!
+    @user = User.find_by_id(params[:id])
+    code = params[:activation_code]
+    case when @user && @user.pending? && @user.activation_code == code
+      User.transaction do
+        @user.activate!
+      end
+      flash[:notice] = "Your account is activated! Please log in to continue."
+      redirect_to root_url
+    when @user && @user.active?
+      flash[:notice] = "Your account is already activated. Please sign in to continue."
+      redirect_to root_url
+    else
+      flash[:alert]  = "Invalid activation code. Please cut and paste the URL into your browser."
+      redirect_to root_url
+    end
   end
 
   def assist
@@ -85,6 +118,11 @@ class UsersController < ApplicationController
         return
       end
     end
+  end
+
+  def activate
+    @user.activate! if @user.pending?
+    redirect_to root_url
   end
 
   def update

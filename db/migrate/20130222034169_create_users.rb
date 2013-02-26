@@ -14,6 +14,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :password_salt
       t.string    :reset_code, :limit=>50
       t.datetime  :reset_code_at
+      t.string    :facebook_id
+      t.string    :token
+      t.string    :created_by 
       t.string    :state, :limit=>25
       t.string    :role, :limit=>25
       t.string    :activation_code, :limit=>100
@@ -21,6 +24,9 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime  :activation_email_sent_at
       t.boolean   :admin, :default=>false
       t.boolean   :verified, :default=>false
+      t.string    :photo_file_name
+      t.string    :photo_file_type
+      t.integer   :photo_file_size
       t.timestamps
     end
     add_index :users, :email

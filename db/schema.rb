@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226041744) do
+ActiveRecord::Schema.define(:version => 20130226041754) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130226041744) do
   end
 
   create_table "bids", :force => true do |t|
-    t.string   "user_id"
-    t.string   "job_id"
+    t.integer  "user_id"
+    t.integer  "job_id"
     t.integer  "amount"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20130226041744) do
   add_index "bids", ["user_id", "job_id", "amount"], :name => "index_bids_on_user_id_and_job_id_and_amount"
 
   create_table "comments", :force => true do |t|
-    t.string   "user_id"
-    t.string   "job_id"
+    t.integer  "user_id"
+    t.integer  "job_id"
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20130226041744) do
   add_index "comments", ["user_id", "job_id", "content"], :name => "index_comments_on_user_id_and_job_id_and_content"
 
   create_table "jobs", :force => true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "title"
     t.string   "description"
     t.string   "category"
@@ -71,20 +71,20 @@ ActiveRecord::Schema.define(:version => 20130226041744) do
     t.string   "password_salt"
     t.string   "reset_code",               :limit => 50
     t.datetime "reset_code_at"
+    t.string   "facebook_id"
+    t.string   "token"
+    t.string   "created_by"
     t.string   "role",                     :limit => 25
     t.string   "activation_code",          :limit => 100
     t.datetime "activated_at"
     t.datetime "activation_email_sent_at"
     t.boolean  "admin",                                   :default => false
     t.boolean  "verified",                                :default => false
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
-    t.string   "facebook_id"
-    t.string   "token"
-    t.string   "created_by"
     t.string   "photo_file_name"
     t.string   "photo_file_type"
     t.integer  "photo_file_size"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
