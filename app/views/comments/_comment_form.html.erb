@@ -1,0 +1,7 @@
+<%= form_for @comment, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.text_field :content, :placeholder => "Comment..." %><br/>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :job_id, :value => @job.id %>
+  <%= f.submit 'Post' %>
+<% end %>

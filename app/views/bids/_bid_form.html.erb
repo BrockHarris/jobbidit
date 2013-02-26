@@ -1,0 +1,7 @@
+<%= form_for @bid, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.text_field :amount, :placeholder => "Bid amount" %><br/>
+  <%= f.hidden_field :user_id, :value => @bidder.id %>
+  <%= f.hidden_field :job_id, :value => @job.id %>
+  <%= f.submit 'Place Bid' %>
+<% end %>
