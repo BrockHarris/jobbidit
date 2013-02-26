@@ -1,11 +1,11 @@
-<h3>Viewing Job</h3><p/>
+<h3>Viewing: <%= @job.title %></h3><p/>
+
+<% if @job.user = current_user %>
+	<%= link_to "Edit job", edit_job_path(@job) %> - <%= link_to "Delete", @job, :method => :delete, :class=> :destroy %><p/>
+<% end %>
 
 <strong>Category:</strong> <br/>
 <%= @job.category %>
-<p/>
-
-<strong>Job Title:</strong> <br/>
-<%= @job.title %>
 <p/>
 
 <strong>Description:</strong><br/>
@@ -25,5 +25,20 @@
 <p/>
 
 <strong>Expires on:</strong><br/>
-<%= (@job.created_at + @job.duration.days) %> 
+<%= (@job.created_at + @job.duration.days) %>
 <p/>
+
+<h4>-Comment on Job-</h4>
+<%= render 'comments/comment_form' %>
+<p/>
+
+<h4>Comments:</h4>
+<%= render 'comments/job_comments' %><p/>
+
+<% if current_user.role == 'provider' %>
+	<h4>-Bid on Job-</h4>
+	<%= render 'bids/bid_form' %><p/>
+<% end %>
+
+<h4>Bid History:</h4>
+<%= render 'bids/bids_on_job' %>

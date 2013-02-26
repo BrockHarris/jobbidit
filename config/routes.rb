@@ -14,9 +14,17 @@ Jobbidit::Application.routes.draw do
   resources :users
   resources :authentications
   resources :sessions,   :only => [:new, :create, :destroy]
- 
-  resources :jobs
   resources :bids
+  resources :comments
+  
+  resources :jobs do
+      member do
+        post :request
+      end
+  end
+
+
+
 
   root :to => 'pages#home'
 

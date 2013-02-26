@@ -2,10 +2,11 @@ class JobsController < ApplicationController
 	before_filter :login_required
 
 	def main
-		@user = current_user
+    @user = current_user
 		@job = Job.new
-
+		#
 		@jobs = Job.all
+		@posted_jobs = @user.jobs
 	end
 
   def create
@@ -21,9 +22,19 @@ class JobsController < ApplicationController
 
 	def show 
 		@job = Job.find(params[:id])
+		@bid = Bid.new
+		@bidder = current_user
+		@bids = @job.bids
+		@comment = Comment.new
+		@comments = @job.comments
 	end
 
+	def edit
+		@job = Job.find(params[:id])
+  end
+
 	def update
+		@job = Job.find(params[:id])
 		if @job.update_attributes(params[:job])
       flash[:notice] = "Your job has been updated!"
       redirect_to @job
@@ -33,5 +44,9 @@ class JobsController < ApplicationController
 	end
 
 	def destroy
-	end
+		@job = Job.find(params[:id])
+    Job.find(@job).destroy
+    flash[:success] = "Your job has been deleted."
+    redirect_to jobspage_path
+  end
 end

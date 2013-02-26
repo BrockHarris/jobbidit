@@ -1,5 +1,8 @@
 <%= form_for @user, :html=> { :multipart => true} do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
+  Profile picture: <%= f.file_field :photo %><br/>
+  <%= render_profile_pic(current_user, :medium) %><br/>
+  <p/>
   <%= f.text_field :username, :placeholder => "Username" %><br/>
   <%= f.select :role, [['User','placer'],['Contractor','provider']] %><br/>
   <%= f.text_field :email, :placeholder => "Email" %> <br/>

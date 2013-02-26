@@ -1,5 +1,7 @@
 <h3>Profile Page</h3>
 <p/>
+<%= render_profile_pic(current_user, :medium) %><br/>
+
 Profile for: <%= current_user.username %>
 <p/>
 Account Type: <%= current_user.role %>

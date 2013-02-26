@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :jobs
+  has_many :bids
+  has_many :comments
   has_attached_file :photo,
                     :styles => {
                     :thumb => "25x25#",
@@ -17,7 +19,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
-                  :address, :state, :zip, :phone, :role
+                  :address, :state, :zip, :phone, :role, :photo
   attr_accessor :password, :mode
 
   before_save :prepare_password
