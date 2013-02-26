@@ -45,4 +45,12 @@ class ApplicationController < ActionController::Base
   def admin_logged_in?
     access_denied unless current_user.try(:admin)
   end
+
+  private
+
+  def catch_users_missing_roles
+    if current_user && current_user.role.blank?
+      redirect_to usertype_path
+    end
+  end
 end

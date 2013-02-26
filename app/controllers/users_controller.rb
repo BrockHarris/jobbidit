@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
 	before_filter :login_required, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update, :destroy]
+  before_filter :catch_users_missing_roles, :only => :show
 
   def show
   end
 
   def profile
   end 
+
+  def usertype
+    @user = current_user
+    @go_to_root = true
+  end
 
   def new
     @user = User.new
@@ -84,7 +90,11 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash[:notice] = "Your account has been updated!"
-      redirect_to (:back)
+      if @go_to_root = true
+        redirect_to root_url
+      else
+        redirect_to (:back)
+      end
     else
     	flash[:error] = "There was a problem with your info, please try again."
     end

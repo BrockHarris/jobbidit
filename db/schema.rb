@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225000019) do
+ActiveRecord::Schema.define(:version => 20130226003224) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,31 @@ ActiveRecord::Schema.define(:version => 20130225000019) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "bids", :force => true do |t|
+    t.string   "user_id"
+    t.string   "job_id"
+    t.string   "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "bids", ["user_id", "job_id", "amount"], :name => "index_bids_on_user_id_and_job_id_and_amount"
+
+  create_table "jobs", :force => true do |t|
+    t.string   "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.string   "category"
+    t.string   "current_bid"
+    t.integer  "duration"
+    t.datetime "expire_date"
+    t.boolean  "open",        :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
 
   create_table "users", :force => true do |t|
     t.string   "email"

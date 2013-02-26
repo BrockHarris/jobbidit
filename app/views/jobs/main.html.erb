@@ -1,0 +1,10 @@
+Main jobs page:
+
+<% if current_user.role == 'placer' %>
+	I'm a <strong>placer</strong> (switch to provider to view all jobs)
+	<%= render 'jobs/job_form' %>
+<% else %>
+	<strong>I'm a provider</strong> (switch to placer to post a job)
+	<%= render 'jobs/view_jobs' %> 
+<% end %>
+

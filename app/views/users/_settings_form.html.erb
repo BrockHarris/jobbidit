@@ -1,6 +1,7 @@
 <%= form_for @user, :html=> { :multipart => true} do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= f.text_field :username, :placeholder => "Username" %><br/>
+  <%= f.select :role, [['User','placer'],['Contractor','provider']] %><br/>
   <%= f.text_field :email, :placeholder => "Email" %> <br/>
   <%= f.password_field :password, :placeholder => "New Password" %><br/>
   <%= f.password_field :password_confirmation, :placeholder => "Confirm New Password" %><br/>

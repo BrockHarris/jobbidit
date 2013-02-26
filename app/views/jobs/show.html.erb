@@ -1,0 +1,29 @@
+<h3>Viewing Job</h3><p/>
+
+<strong>Category:</strong> <br/>
+<%= @job.category %>
+<p/>
+
+<strong>Job Title:</strong> <br/>
+<%= @job.title %>
+<p/>
+
+<strong>Description:</strong><br/>
+<%= @job.description %>
+<p/>
+
+<strong>Posted by:</strong><br/>
+<%= @job.user.username %>
+<p/>
+
+<strong>Duration:</strong><br/>
+<%= @job.duration %> Days
+<p/>
+
+<strong>Posted on:</strong><br/>
+<%= @job.created_at %> 
+<p/>
+
+<strong>Expires on:</strong><br/>
+<%= (@job.created_at + @job.duration.days) %> 
+<p/>

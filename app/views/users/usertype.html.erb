@@ -1,0 +1,8 @@
+Please select an account type:
+<p/>
+
+<%= form_for @user, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.select :role, [['User','placer'],['Contractor','provider']] %><br/>
+  <%= f.submit 'Update' %>
+<% end %>

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
+  has_many :jobs
   has_attached_file :photo,
                     :styles => {
                     :thumb => "25x25#",
