@@ -1,0 +1,2 @@
+module JobphotosHelper
+end

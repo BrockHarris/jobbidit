@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226041754) do
+ActiveRecord::Schema.define(:version => 20130227043112) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(:version => 20130226041754) do
 
   add_index "comments", ["user_id", "job_id", "content"], :name => "index_comments_on_user_id_and_job_id_and_content"
 
+  create_table "jobphotos", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "caption"
+    t.string   "photo_file_name"
+    t.string   "photo_file_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "jobphotos", ["job_id"], :name => "index_jobphotos_on_job_id"
+
   create_table "jobs", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -56,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20130226041754) do
   end
 
   add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
+
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.string   "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

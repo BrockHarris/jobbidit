@@ -81,12 +81,31 @@ class User < ActiveRecord::Base
     save(:validate=>false)
   end
 
+  def send_activation_email!
+    # Preconditions checked by UserMailer.deliver_activation.
+    transaction do
+      UserMailer.activation(self).deliver
+      self.activation_email_sent_at = Time.now
+      self.save!
+    end
+  end
+
   def send_reset_password_email!
     if self.active? || self.pending?
       transaction do
         make_reset_code
         save!
         UserMailer.forgot(self).deliver
+      end
+    end
+  end
+
+  def send_welcome_email!
+    if self.active? || self.pending?
+      transaction do
+        make_reset_code
+        save!
+        UserMailer.welcome(self).deliver
       end
     end
   end

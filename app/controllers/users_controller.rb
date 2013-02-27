@@ -17,35 +17,32 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(params[:user])
     if @user.save
-      @user.activate!
-      flash[:notice] = "Thanks for signing up!"
-      sign_in_and_redirect_back_or_default(@user, users_path(@user))
+      @user.register! #set status to pending
+      @user.send_activation_email!
+      flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
+      redirect_to root_url
     else
       flash[:error] = "There was a problem with your info, please try again."
-      redirect_to signup_path
+      redirect_to root_url
     end
   end
-
-  # Logic to turn on activation email setup #
-  #def create
-    #@user = User.new(params[:user])
-    #if @user.save
-      #@user.register! #set status to pending
-      #@user.send_activation_email!
-      #flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
-      #redirect_to root_url
-    #else
-      #flash[:error] = "There was a problem with your info, please try again."
-      #redirect_to signup_path
-    #end
-  #end
   
   def settings
     @user = current_user
+  end
+
+  def welcome
+    if @user.nil? || (!@user.active? && !@user.pending?)
+      flash.now[:error] = "This user is no longer available for this operation."
+    else
+      @user.send_welcome_email!
+      flash[:notice] = "An email has been sent to #{@user.email}."
+    end
+    redirect_to root_url
   end
 
   def activation

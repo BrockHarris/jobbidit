@@ -7,5 +7,11 @@
   <%= f.select :duration, [['3 Days','3'],['1 Week','7'],['2 Weeks','14'],['1 Month','28']] %><br/>
   <%= f.select :category, [['Category 1','category1'],['Category 2','category2'],['Category 3','category3']] %><br/>
   <%# f.hidden_field :expire_date, :value => Time.now + "#{duration}".days %>
+
+  <%= f.fields_for :jobphotos do |builder| %>
+    <%= render "jobphoto_fields", :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add another photo", f, :jobphotos %></p>
+
   <%= f.submit 'Post' %>
 <% end %>

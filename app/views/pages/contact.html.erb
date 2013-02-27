@@ -1,0 +1,21 @@
+
+
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=100+Broadway,+Manhattan,+NY&amp;aq=0&amp;oq=100+br&amp;sll=42.746632,-75.770041&amp;sspn=2.275125,0.483398&amp;ie=UTF8&amp;hq=&amp;hnear=100+Broadway,+New+York,+10005&amp;ll=40.745696,-73.962021&amp;spn=0.036675,0.007553&amp;t=m&amp;z=13&amp;iwloc=A&amp;output=embed"></iframe>
+
+<%= form_for @message, :html=> { :multipart => true} do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+   
+    <%= f.submit "Send" %>
+
+<% end %>

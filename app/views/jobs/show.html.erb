@@ -12,6 +12,13 @@
 <%= @job.description %>
 <p/>
 
+<p>
+<% @jobphotos.each do |jobphoto| %>
+	<%= image_tag jobphoto.photo.url(:small) %>
+  <%= link_to jobphoto.caption, jobphoto %>
+<% end %>
+</p>
+
 <strong>Posted by:</strong><br/>
 <%= @job.user.username %>
 <p/>

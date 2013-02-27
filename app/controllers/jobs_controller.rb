@@ -4,6 +4,7 @@ class JobsController < ApplicationController
 	def main
     @user = current_user
 		@job = Job.new
+		1.times { @job.jobphotos.build }
 		#
 		@jobs = Job.all
 		@posted_jobs = @user.jobs
@@ -27,6 +28,7 @@ class JobsController < ApplicationController
 		@bids = @job.bids
 		@comment = Comment.new
 		@comments = @job.comments
+		@jobphotos = Jobphoto.where(:job_id => @job.id)
 	end
 
 	def edit
