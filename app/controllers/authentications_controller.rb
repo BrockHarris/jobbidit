@@ -9,8 +9,13 @@ class AuthenticationsController < ApplicationController
     @omniauth = request.env["omniauth.auth"]
     authentication = Authentication.where(:provider=>@omniauth['provider'], :token=>@omniauth['credentials']['token'],:uid=>@omniauth['uid']).where("user_id IS NOT NULL").first
     if authentication
-      flash[:notice] = "Welcome back!"
-      sign_in_and_redirect_back_or_default(authentication.user, user_path(authentication.user))
+      if authentication.user.pending?
+        flash[:notice] = "Please click the link in your activation email before logging in with Facebook!"
+        redirect_to root_url
+      else
+        flash[:notice] = "Welcome back!"
+        sign_in_and_redirect_back_or_default(authentication.user, user_path(authentication.user))
+      end
     elsif current_user
       #the user is logged in and trying to add another authentication
       current_user.authentications.create(:provider => @omniauth['provider'], :uid => @omniauth['uid'])
@@ -73,10 +78,13 @@ class AuthenticationsController < ApplicationController
 
   def handle_new_user_creation_through_authentication
     username = @omniauth['info']['nickname'] || @omniauth['info']['name']
-    user = User.new(:mode=>"service", :email=>@omniauth['info']['email'], :facebook_id => @omniauth['uid'], :token=>@omniauth['credentials']['token'], :username=>username.gsub(/\W/,''))
+    user = User.new(:mode=>"service", :email=>@omniauth['info']['email'], :state=>"pending", :activation_code=>SecureRandom.hex(6), :activated_at=>nil, :facebook_id=>@omniauth['uid'], :token=>@omniauth['credentials']['token'], :username=>username.gsub(/\W/,''))
     user.authentications.build(:provider => @omniauth ['provider'], :uid => @omniauth['uid'], :token=>@omniauth['credentials']['token'])
     user.save!
-    flash[:notice] = "Thanks for signing up!"
-    sign_in_and_redirect_back_or_default(user, user_path(user))
+    user.send_activation_email!
+    flash[:notice] = "Thanks for signing up! An email has been sent to #{user.email} with instructions on how to immediately activate your account."
+    redirect_to root_url
+
+    #sign_in_and_redirect_back_or_default(user, user_path(user))
   end
 end
