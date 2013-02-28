@@ -4,7 +4,7 @@
   <%= render_profile_pic(current_user, :medium) %><br/>
   <p/>
   <%= f.text_field :username, :placeholder => "Username" %><br/>
-  <%= f.select :role, [['User','placer'],['Contractor','provider']] %><br/>
+  <%= f.select :role, [['Homeowner','placer'],['Contractor','provider']] %><br/>
   <%= f.text_field :email, :placeholder => "Email" %> <br/>
   <%= f.password_field :password, :placeholder => "New Password" %><br/>
   <%= f.password_field :password_confirmation, :placeholder => "Confirm New Password" %><br/>
@@ -14,5 +14,8 @@
   <%= f.select :state, us_states %><br/>
   <%= f.text_field :zip, :placeholder => "Zip Code" %> <br/>
   <%= f.text_field :phone, :placeholder => "Phone Number" %> <br/>
-  <%= f.submit 'Update' %>
+
+  <%= f.check_box :admin, {}, true, false %>
+    <%= f.label "Admin (Temp for testing)" %> <br/>
+  <%= f.submit 'Save' %>
 <% end %>

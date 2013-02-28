@@ -2,14 +2,16 @@
 <html>
 <head>
   <title>JobBidIt</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<%= yield %>
-<%= render 'layouts/footer' %>
+	<%= render 'layouts/header' %>
+	<div class="body_container">
+		<%= yield %>
+	</div>
+	<%= render 'layouts/footer' %>
 </body>
 </html>

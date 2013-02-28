@@ -9,7 +9,8 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
-gem 'jquery-rails'
+gem "jquery-rails", ">= 2.0.0"
+gem 'jquery-ui-rails'
 
 
 # ##Gems used only for assets and not required

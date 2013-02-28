@@ -1,0 +1,15 @@
+<h3>Admin Panel:</h3>
+<p/>
+
+<%= render 'jobtypes/jobtype_form' %>
+<p/>
+
+<h4>Current job categories:</h4>
+
+<% unless @jobtypes.empty? %>
+  <% @jobtypes.each do |jobtype| %>
+		- <%= jobtype.name %><br/>
+	<% end %>
+<% else %>
+  No job categories exist.
+<% end %>

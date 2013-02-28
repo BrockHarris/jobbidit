@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227043112) do
+ActiveRecord::Schema.define(:version => 20130227224906) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(:version => 20130227043112) do
   end
 
   add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
+
+  create_table "jobtypes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "jobtypes", ["name"], :name => "index_jobtypes_on_name"
 
   create_table "messages", :force => true do |t|
     t.string   "name"

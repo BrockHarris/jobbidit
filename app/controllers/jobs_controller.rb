@@ -2,6 +2,7 @@ class JobsController < ApplicationController
 	before_filter :login_required
 
 	def main
+		@jobtypes = Jobtype.all
     @user = current_user
 		@job = Job.new
 		1.times { @job.jobphotos.build }

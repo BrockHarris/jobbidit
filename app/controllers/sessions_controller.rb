@@ -1,10 +1,5 @@
 class SessionsController < ApplicationController
 
-  def signup
-  	@user = User.new
-  	redirect_to root_url if current_user
-	end
-
   def create
     user = User.authenticate(params[:login], params[:password])
     if user

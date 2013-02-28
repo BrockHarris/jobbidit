@@ -8,11 +8,11 @@ Jobbidit::Application.routes.draw do
   match '/contact',  :to => 'pages#contact'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  match '/signup', :to => 'sessions#signup'
   match '/usertype', :to => 'users#usertype'
   match '/assist', :to => 'users#assist'
   match '/jobspage', :to => 'jobs#main'
   match '/settings', :to => 'users#settings'
+  match '/admin', :to => 'pages#admin_panel'
   match "/reset/:id/:reset_code", :to=>"users#reset", :as=>"reset"
   match '/activate/:id/:activation_code', :to=>"users#activation", :as=>"activate"
   match "/activate_user/:id", :to=>"users#activate", :as=>"activate_user"
@@ -26,6 +26,7 @@ Jobbidit::Application.routes.draw do
   resources :authentications
   resources :sessions,   :only => [:new, :create, :destroy]
   resources :bids
+  resources :jobtypes
   resources :comments
 
   resources :jobs do

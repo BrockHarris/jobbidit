@@ -2,11 +2,6 @@
   <div class="navbar-inner">
     <a class="brand" href="<%= root_url%>">JobBidit</a>
     <ul class="nav pull-right">
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><%= link_to "FAQ", faq_path %></li>
-      <li><%= link_to "About us", about_path %></li>
-      <li><%= link_to "Privacy Policy", privacypolicy_path %></li>
-
       <% if current_user %>
         <li><%= link_to "Jobs", jobspage_path %></li>
         <li><%= link_to "Profile", current_user %></li>
@@ -15,7 +10,6 @@
       <% else %>
         <li><%= link_to "Contractors", contractors_path %></li>
         <li><%= link_to "Homeowners", homeowners_path %></li>
-        <li><%= link_to "Signup", signup_path %></li>
       <% end %>
     </ul>
   </div>

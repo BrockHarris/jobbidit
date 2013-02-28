@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
-                  :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at
+                  :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin
   attr_accessor :password, :mode
 
   before_save :prepare_password

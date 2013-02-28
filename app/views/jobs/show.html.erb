@@ -13,9 +13,13 @@
 <p/>
 
 <p>
+<% unless @jobphotos.empty? %>
 <% @jobphotos.each do |jobphoto| %>
 	<%= image_tag jobphoto.photo.url(:small) %>
-  <%= link_to jobphoto.caption, jobphoto %>
+  <%= jobphoto.caption %>
+<% end %>
+<% else %>
+No photos posted for this job.
 <% end %>
 </p>
 

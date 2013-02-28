@@ -1,4 +1,11 @@
-<div class="hero-unit">
-  <h1>Contractors</h1>
-  <p>This page is for contractors.</p>
-</div>
+<h3>Contractor sign up:</h3>
+<p/>
+<%= form_for @user, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.text_field :username, :placeholder => "Username" %><br/>
+  <%= f.text_field :email, :placeholder => "Email" %> <br/>
+  <%= f.password_field :password, :placeholder => "Password" %><br/>
+  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %><br/>
+  <%= f.hidden_field :role, :value=> "provider" %><br/>
+  <%= f.submit 'Sign up' %>
+<% end %>
