@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash[:error] = "There was a problem with your info, please try again."
-      redirect_to root_url
+      redirect_to (:back)
     end
   end
   
