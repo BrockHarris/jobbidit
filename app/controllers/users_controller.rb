@@ -31,8 +31,11 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
       redirect_to root_url
     else
-      flash[:error] = "There was a problem with your info, please try again."
-      redirect_to (:back)
+      if @user.role == 'placer'
+        render 'pages/homeowners'
+      elsif @user.role == 'provider'
+        render 'pages/contractors'
+      end
     end
   end
   

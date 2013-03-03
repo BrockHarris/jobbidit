@@ -9,9 +9,7 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
-gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'client_side_validations'
 
 # ##Gems used only for assets and not required
 # in production environments by default.
@@ -25,11 +23,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-
-
 group :development do
 	gem 'sqlite3-ruby', :require => 'sqlite3'
 end
+
+gem 'jquery-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
