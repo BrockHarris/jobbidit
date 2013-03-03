@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-	before_filter :login_required, :only => [:index, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:edit, :update, :destroy]
+	before_filter :login_required, :only => :destroy
+  before_filter :correct_user, :only => [:update, :destroy]
   before_filter :catch_users_missing_roles, :only => :show
 
   def show
@@ -16,6 +16,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def fbform
+    @user = User.find_by_id(session[:temp_id])
+    session[:user_id] = @user.id
   end
 
   def create
@@ -124,10 +129,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Your account has been updated!"
-      if @go_to_root = true
+      if @user.pending?
+        flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
+        session[:user_id] = nil
         redirect_to root_url
       else
+        flash[:notice] = "Your account has been updated!"
         redirect_to (:back)
       end
     else

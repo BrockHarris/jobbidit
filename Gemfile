@@ -9,9 +9,9 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
-gem "jquery-rails", ">= 2.0.0"
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
+gem 'client_side_validations'
 
 # ##Gems used only for assets and not required
 # in production environments by default.

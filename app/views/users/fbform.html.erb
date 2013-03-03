@@ -1,11 +1,13 @@
-<h3>Contractor sign up:</h3>
-<p/>
-<%= form_for @user, :validate => true, :html=> { :multipart => true} do |f| %>
+<h3>Finish facebook sign up:</h3>
+
+<%= form_for @user, :html=> { :multipart => true} do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.text_field :firstname, :placeholder => "First Name" %> <br/>
+  <%= f.text_field :lastname, :placeholder => "Last Name" %> <br/>
   <%= f.text_field :username, :placeholder => "Username" %><br/>
   <%= f.text_field :email, :placeholder => "Email" %> <br/>
   <%= f.password_field :password, :placeholder => "Password" %><br/>
   <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %><br/>
-  <%= f.hidden_field :role, :value=> "provider" %><br/>
-  <%= f.submit 'Sign up' %>
+  <%= f.select :role, [['Homeowner','placer'],['Contractor','provider']] %><br/>
+  <%= f.submit 'Save' %>
 <% end %>

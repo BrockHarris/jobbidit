@@ -1,4 +1,11 @@
+<% if @page.present? %>
 <div class="hero-unit">
-  <h1>FAQ</h1>
+  <h2><%= @page.header %></h2>
+  <p><%= @page.content %></p>
+</div>
+<% else %>
+<div class="hero-unit">
+  <h2>FAQ</h2>
   <p>This page is for frequently asked questions.</p>
 </div>
+<% end %>

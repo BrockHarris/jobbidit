@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227224906) do
+ActiveRecord::Schema.define(:version => 20130302205313) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(:version => 20130227224906) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.text     "header"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pages", ["name"], :name => "index_pages_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email"

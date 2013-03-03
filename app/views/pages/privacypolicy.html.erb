@@ -1,4 +1,11 @@
+<% if @page.present? %>
 <div class="hero-unit">
-  <h1>Privacy Policy</h1>
+  <h2><%= @page.header %></h2>
+  <p><%= @page.content %></p>
+</div>
+<% else %>
+<div class="hero-unit">
+  <h2>Privacy Policy</h2>
   <p>This page is for the privacy policy.</p>
 </div>
+<% end %>

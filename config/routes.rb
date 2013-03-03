@@ -12,6 +12,7 @@ Jobbidit::Application.routes.draw do
   match '/assist', :to => 'users#assist'
   match '/jobspage', :to => 'jobs#main'
   match '/settings', :to => 'users#settings'
+  match '/fbform', :to => 'users#fbform'
   match '/admin', :to => 'pages#admin_panel'
   match "/reset/:id/:reset_code", :to=>"users#reset", :as=>"reset"
   match '/activate/:id/:activation_code', :to=>"users#activation", :as=>"activate"
@@ -23,6 +24,7 @@ Jobbidit::Application.routes.draw do
 
   resources :messages
   resources :users
+  resources :pages
   resources :authentications
   resources :sessions,   :only => [:new, :create, :destroy]
   resources :bids

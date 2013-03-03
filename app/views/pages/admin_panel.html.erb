@@ -5,11 +5,32 @@
 <p/>
 
 <h4>Current job categories:</h4>
-
 <% unless @jobtypes.empty? %>
   <% @jobtypes.each do |jobtype| %>
 		- <%= jobtype.name %><br/>
 	<% end %>
 <% else %>
   No job categories exist.
+<% end %>
+<p/>
+
+<h4>Customized static pages:</h4>
+<% unless @pages.empty? %>
+  <% @pages.each do |page| %>
+		<strong>Page: <%= page.name %></strong> <%= link_to "[edit]", edit_page_path(page) %><br/>
+		Header: <%= page.header %><br/>
+		Content: <%= page.content %><br/>
+	<% end %>
+<% else %>
+  You haven't customized any static pages yet.
+<% end %>
+<p/>
+
+<h4>Create customized static pages:</h4>
+<%= form_for @page, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.select :name, [['FAQ','faq'],['About','about'],['Privacy Policy','privacypolicy'],['Contact','contact']] %><br/>
+  <%= f.text_field :header, :placeholder => "Page header" %> <br/>
+  <%= f.text_area :content, :placeholder => "Page content" %><br/>
+  <%= f.submit 'Save' %>
 <% end %>

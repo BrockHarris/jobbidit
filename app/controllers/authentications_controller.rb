@@ -78,12 +78,14 @@ class AuthenticationsController < ApplicationController
 
   def handle_new_user_creation_through_authentication
     username = @omniauth['info']['nickname'] || @omniauth['info']['name']
-    user = User.new(:mode=>"service", :email=>@omniauth['info']['email'], :state=>"pending", :activation_code=>SecureRandom.hex(6), :activated_at=>nil, :facebook_id=>@omniauth['uid'], :token=>@omniauth['credentials']['token'], :username=>username.gsub(/\W/,''))
+    user = User.new(:mode=>"service", :email=>@omniauth['info']['email'], :firstname=>@omniauth['info']['first_name'], :lastname=>@omniauth['info']['last_name'], :state=>"pending", :activation_code=>SecureRandom.hex(6), :activated_at=>nil, :facebook_id=>@omniauth['uid'], :token=>@omniauth['credentials']['token'], :username=>username.gsub(/\W/,''))
     user.authentications.build(:provider => @omniauth ['provider'], :uid => @omniauth['uid'], :token=>@omniauth['credentials']['token'])
     user.save!
     user.send_activation_email!
-    flash[:notice] = "Thanks for signing up! An email has been sent to #{user.email} with instructions on how to immediately activate your account."
-    redirect_to root_url
+    #flash[:notice] = "Thanks for signing up! An email has been sent to #{user.email} with instructions on how to immediately activate your account."
+
+    session[:temp_id] = user.id
+    redirect_to fbform_path
 
     #sign_in_and_redirect_back_or_default(user, user_path(user))
   end

@@ -1,14 +1,11 @@
-<script type='text/javascript'>
-   $('#mydiv').show();
- </script>
- 
+<% if @page.present? %>
 <div class="hero-unit">
-  <h1>About us</h1>
+  <h2><%= @page.header %></h2>
+  <p><%= @page.content %></p>
+</div>
+<% else %>
+<div class="hero-unit">
+  <h2>About us</h2>
   <p>This page is for information about JobBidit.</p>
 </div>
-
-
-
- <div id='mydiv' style='display:none'>
-   TEST
- </div>
+<% end %>
