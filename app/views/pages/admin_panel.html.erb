@@ -1,3 +1,4 @@
+<% if admin_user %>
 <h3>Admin Panel:</h3>
 <p/>
 
@@ -33,4 +34,8 @@
   <%= f.text_field :header, :placeholder => "Page header" %> <br/>
   <%= f.text_area :content, :placeholder => "Page content" %><br/>
   <%= f.submit 'Save' %>
+<% end %>
+
+<% else %>
+  <%= render 'admins/start' %>
 <% end %>

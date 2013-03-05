@@ -2,6 +2,8 @@ class PagesController < ApplicationController
 before_filter :catch_users_missing_roles
 	
 	def admin_panel
+		@new_admin = Admin.new
+		
 		@jobtypes = Jobtype.all
 		@jobtype = Jobtype.new
 		@page = Page.new

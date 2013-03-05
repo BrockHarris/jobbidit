@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all 
   helper_method :current_user
+  helper_method :admin_user
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def admin_user
+    @admin_user ||= Admin.find(session[:admin_id]) if session[:admin_id]
   end
 
   def store_location(url=request.url) # Might be able to nix
@@ -14,6 +19,11 @@ class ApplicationController < ActionController::Base
   def sign_in_and_redirect_back_or_default(user, url=request.url)
     session[:user_id] = user.id
     redirect_to root_url
+  end
+
+  def sign_admin_in(admin)
+    session[:admin_id] = admin.id
+    redirect_to admin_path
   end
 
   def redirect_back_or_default(default)

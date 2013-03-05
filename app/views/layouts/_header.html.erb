@@ -11,6 +11,9 @@
         <li><%= link_to "Contractors", contractors_path %></li>
         <li><%= link_to "Homeowners", homeowners_path %></li>
       <% end %>
+      <% if admin_user %>
+        <li><%= link_to "Admin Logout", adminsignout_path, :method => :delete %></li>
+      <% end %>
     </ul>
   </div>
 </div>

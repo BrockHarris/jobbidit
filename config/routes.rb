@@ -8,6 +8,7 @@ Jobbidit::Application.routes.draw do
   match '/contact',  :to => 'pages#contact'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/adminsignout', :to => 'adminsessions#destroy'
   match '/usertype', :to => 'users#usertype'
   match '/assist', :to => 'users#assist'
   match '/jobspage', :to => 'jobs#main'
@@ -23,10 +24,12 @@ Jobbidit::Application.routes.draw do
   match "complete_session_authentication_path", :to=>"authentications#complete_session_authentication", :as=>:complete_session_authentication
 
   resources :messages
+  resources :admins
   resources :users
   resources :pages
   resources :authentications
   resources :sessions,   :only => [:new, :create, :destroy]
+  resources :adminsessions,   :only => [:new, :create, :destroy]
   resources :bids
   resources :jobtypes
   resources :comments
