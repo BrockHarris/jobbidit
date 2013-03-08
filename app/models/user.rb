@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
 
   before_save :prepare_password
 
+  default_scope where("users.deleted_at IS NULL")
+  scope :created_order, order("users.created_at DESC")
+
+  def destroy
+   update_attribute(:deleted_at, Time.now.utc)
+   run_callbacks(:destroy) 
+  end 
+
   def self.authenticate(login, pass)
     user = self.where(["username=? OR email=?", login, login]).first
     return user if user && user.matching_password?(pass) && user.active?

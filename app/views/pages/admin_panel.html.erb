@@ -2,10 +2,36 @@
 <h3>Admin Panel:</h3>
 <p/>
 
-<%= render 'jobtypes/jobtype_form' %>
+<h4>Listing all users:</h4>
+<table>
+  <thead>
+     <tr>
+      <th>ID #</th>
+      <th>Status</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Activated on</th>
+     <tr>
+  </thead>
+  <tbody>
+    <% for user in @users %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.state %></td> 
+      <td><%= link_to user.username, user %></td>
+      <td><%= user.email %></td> 
+      <td><%= user.activated_at %></td>  
+      <td><%= link_to "Delete", user_path(user), :method=>:delete  %></td>
+    <tr>
+    <% end %>
+  </tbody>
+<table>
 <p/>
 
 <h4>Current job categories:</h4>
+<%= render 'jobtypes/jobtype_form' %>
+<p/>
+
 <% unless @jobtypes.empty? %>
   <% @jobtypes.each do |jobtype| %>
 		- <%= jobtype.name %><br/>

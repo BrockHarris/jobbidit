@@ -1,10 +1,2 @@
 <h3>Edit your job:</h3>
-<%= form_for @job, :html=> { :multipart => true} do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.text_field :title, :placeholder => "Title" %><br/>
-  <%= f.text_area :description, :placeholder => "Description" %> <br/>
-  <%= f.select :duration, [['3 Days','3'],['1 Week','7'],['2 Weeks','14'],['1 Month','28']] %><br/>
-  <%= f.select :category, [['Category 1','category1'],['Category 2','category2'],['Category 3','category3']] %><br/>
-  <%= f.submit 'Save' %>
-<% end %>
+<%= render 'jobs/job_form' %>

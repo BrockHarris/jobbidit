@@ -15,7 +15,9 @@
 <p>
 <% unless @jobphotos.empty? %>
 <% @jobphotos.each do |jobphoto| %>
-	<%= image_tag jobphoto.photo.url(:small) %>
+	<% if jobphoto.photo.exists? %>
+		<%= image_tag jobphoto.photo.url(:small) %>
+	<% end %>
   <%= jobphoto.caption %>
 <% end %>
 <% else %>

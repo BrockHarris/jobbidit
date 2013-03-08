@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-	before_filter :login_required, :only => :destroy
   before_filter :correct_user, :only => [:update, :destroy]
   before_filter :catch_users_missing_roles, :only => :show
 
@@ -146,8 +145,8 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    User.find(@user).destroy
     @user = User.find(params[:id])
+    User.find(@user).destroy
     flash[:success] = "User has been removed."
     redirect_to(:back)
   end
