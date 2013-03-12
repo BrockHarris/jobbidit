@@ -1,2 +1,15 @@
-<h3>Viewing ALL jobs:</h3><p/>
-<%= render @jobs  %>
+<h3>Viewing all jobs:</h3>
+<p/>
+
+<table>
+  <thead>
+     <tr>
+      <th>Category</th>
+      <th>Title</th>
+      <th>User</th>
+     <tr>
+  </thead>
+  <tbody>
+  	<%= render @jobs  %>
+  </tbody>
+<table>

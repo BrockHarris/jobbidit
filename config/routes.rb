@@ -14,6 +14,7 @@ Jobbidit::Application.routes.draw do
   match '/jobspage', :to => 'jobs#main'
   match '/settings', :to => 'users#settings'
   match '/fbform', :to => 'users#fbform'
+  match '/inbox', :to => 'pmessages#index'
   match '/admin', :to => 'pages#admin_panel'
   match "/reset/:id/:reset_code", :to=>"users#reset", :as=>"reset"
   match '/activate/:id/:activation_code', :to=>"users#activation", :as=>"activate"
@@ -24,6 +25,7 @@ Jobbidit::Application.routes.draw do
   match "complete_session_authentication_path", :to=>"authentications#complete_session_authentication", :as=>:complete_session_authentication
 
   resources :messages
+  resources :pmessages
   resources :admins
   resources :users
   resources :pages

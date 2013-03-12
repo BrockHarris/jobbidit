@@ -1,3 +1,9 @@
-<li>
-<%= job.category %> :: <%= link_to job.title, job %> :: Posted by:<%= job.user.username %>
-</li>
+<tr>
+  <td><%= job.category %></td>
+  <td><%= link_to job.title, job %></td> 
+  <td>
+  	<% if @job.user = current_user %>
+			<%= link_to "Edit job", edit_job_path(@job) %> - <%= link_to "Delete", @job, :method => :delete, :class=> :destroy %>
+		<% end %>
+	</td>
+<tr>

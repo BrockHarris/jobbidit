@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :bids
   has_many :comments
+  has_many :pmessages, :dependent => :destroy
+  has_many :received_pmessages, :foreign_key=>"receiver_id", :class_name=>"Pmessage", :dependent=>:destroy
   has_attached_file :photo,
                     :styles => {
                     :thumb => "25x25#",
@@ -18,9 +20,9 @@ class User < ActiveRecord::Base
   validates :password, :length=>{:minimum => 4}, :on => :create, :unless=>Proc.new{|u| u.service_mode?}                
   validates_confirmation_of :password
 
+  attr_accessor :password, :mode
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
                   :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin
-  attr_accessor :password, :mode
 
   before_save :prepare_password
 

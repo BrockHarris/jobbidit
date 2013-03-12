@@ -1,3 +1,11 @@
 <li>
-Bid Amount: <%= bid.amount %>   ::    Bidder:<%= bid.user.username %>
+  $<%= bid.amount %> - Bidder: <%= link_to bid.user.username, bid.user %> <br/>
+  <% if @job.user == current_user && @job.open == true %>
+		<%= form_for @job, :html=> { :multipart => true} do |f| %>
+  		<%= render 'shared/error_messages', :object => f.object %>
+ 			<%= f.hidden_field :open, :value => false %>
+ 			<%= f.hidden_field :current_bid, :value => bid.amount %>
+  		<%= f.submit 'Accept Bid' %>
+		<% end %>
+	<% end %>
 </li>

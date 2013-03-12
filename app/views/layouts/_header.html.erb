@@ -5,6 +5,7 @@
       <% if current_user %>
         <li><%= link_to "Jobs", jobspage_path %></li>
         <li><%= link_to "Profile", current_user %></li>
+        <li><%= link_to "Messages", inbox_path %></li>
       	<li><%= link_to "Settings", settings_path %></li>
         <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% else %>

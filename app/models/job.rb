@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
-  attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, :jobphotos_attributes
+  attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, 
+                  :jobphotos_attributes, :bid_count
 
   belongs_to :user
   belongs_to :jobtype
@@ -14,4 +15,8 @@ class Job < ActiveRecord::Base
   validates :description, :presence => true, :length => { :maximum => 500 }
   validates :user_id, :presence => true
 
+  def update_current_bid
+    bid_count = self.bids.count
+    connection.execute("UPDATE jobs SET bid_count = #{bid_count} WHERE id = #{self.id}")
+  end
 end  

@@ -1,7 +1,7 @@
 <h3>Viewing: <%= @job.title %></h3><p/>
 
 <% if @job.user = current_user %>
-	<%= link_to "Edit job", edit_job_path(@job) %> - <%= link_to "Delete", @job, :method => :delete, :class=> :destroy %><p/>
+	<%= link_to "[Edit]", edit_job_path(@job) %> - <%= link_to "[Delete]", @job, :method => :delete, :class=> :destroy %><p/>
 <% end %>
 
 <strong>Category:</strong> <br/>
@@ -14,12 +14,12 @@
 
 <p>
 <% unless @jobphotos.empty? %>
-<% @jobphotos.each do |jobphoto| %>
-	<% if jobphoto.photo.exists? %>
-		<%= image_tag jobphoto.photo.url(:small) %>
+	<% @jobphotos.each do |jobphoto| %>
+		<% if jobphoto.photo.exists? %>
+			<%= image_tag jobphoto.photo.url(:small) %>
+		<% end %>
+  	<%= jobphoto.caption %>
 	<% end %>
-  <%= jobphoto.caption %>
-<% end %>
 <% else %>
 No photos posted for this job.
 <% end %>
@@ -48,10 +48,13 @@ No photos posted for this job.
 <h4>Comments:</h4>
 <%= render 'comments/job_comments' %><p/>
 
-<% if current_user.role == 'provider' %>
+<% if current_user.role == 'provider' && @job.open == true %>
 	<h4>-Bid on Job-</h4>
 	<%= render 'bids/bid_form' %><p/>
 <% end %>
 
+<h4>Current Bid: $<%= @job.current_bid %></h4>
+
 <h4>Bid History:</h4>
+<strong>Bid count:</strong> <%= @job.bid_count %> Bids
 <%= render 'bids/bids_on_job' %>

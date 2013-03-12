@@ -2,15 +2,14 @@ Main jobs page:
 
 <% if current_user.role == 'placer' %>
 
-	<h4>Jobs you've posted:</h4>
 	<%= render 'jobs/job_history' %> <p/>
 	
-	I'm a <strong>placer</strong> (switch to provider to view all jobs)
+	I'm a <strong>homeowner</strong> (switch to contractor to view all jobs)
 
 	<%= render 'jobs/job_form' %> <p/>
 	
 <% else %>
-	<strong>I'm a provider</strong> (switch to placer to post a job)
+	<strong>I'm a contractor</strong> (switch to homeowner to post a job)
 	<%= render 'jobs/view_jobs' %> 
 <% end %>
 

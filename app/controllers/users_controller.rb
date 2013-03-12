@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :catch_users_missing_roles, :only => :show
 
   def show
+    @profile_user = User.find(params[:id])
+    @pmessage = Pmessage.new
   end
 
   def profile
