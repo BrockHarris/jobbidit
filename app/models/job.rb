@@ -1,4 +1,9 @@
 class Job < ActiveRecord::Base
+
+  searchable do
+    text :title, :description, :category
+  end
+
   attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, 
                   :jobphotos_attributes, :bid_count
 

@@ -11,7 +11,6 @@ Jobbidit::Application.routes.draw do
   match '/adminsignout', :to => 'adminsessions#destroy'
   match '/usertype', :to => 'users#usertype'
   match '/assist', :to => 'users#assist'
-  match '/jobspage', :to => 'jobs#main'
   match '/settings', :to => 'users#settings'
   match '/fbform', :to => 'users#fbform'
   match '/inbox', :to => 'pmessages#index'

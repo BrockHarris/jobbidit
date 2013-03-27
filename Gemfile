@@ -10,6 +10,8 @@ gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
 gem 'jquery-ui-rails'
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

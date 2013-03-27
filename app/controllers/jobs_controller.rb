@@ -1,15 +1,21 @@
 class JobsController < ApplicationController
 	before_filter :login_required
 
-	def main
+	def index
+		@search = Job.search do
+  		fulltext params[:search]
+  	end
+  	@jobs = @search.results
+
 		@jobtypes = Jobtype.all
     @user = current_user
 		@job = Job.new
 		1.times { @job.jobphotos.build }
 		#
-		@jobs = Job.all
 		@posted_jobs = @user.jobs
 	end
+
+
 
   def create
 		@job = Job.new(params[:job])

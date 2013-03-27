@@ -1,2 +1,12 @@
 <h4>Messages Page</h4>
-<%= @messages.count %> unread messages.
+You have <%= pluralize(@messages.count, "unread message") %>.
+
+<h4>Unread:</h4>
+<% unless @messages.empty? %>
+	<% @messages.each do |message| %>
+  	<li>
+  		<%= message.title %><br/>
+  		<%= message.body %>
+  	</li>
+	<% end %>
+<% end %>
