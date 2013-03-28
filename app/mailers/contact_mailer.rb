@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default :from => "support@jobbidit.herokuapp.com"
+  default :from => "support@homefixt.herokuapp.com"
   default :to => "stsikder@gmail.com"
 
   def new_message(message)

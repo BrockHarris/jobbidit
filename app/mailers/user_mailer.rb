@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "support@jobbidit.herokuapp.com"
+  default from: "support@homefixt.herokuapp.com"
 
   def activation(user)
     @url  = activate_url(:host => SITE_URL_HOST, :id => user.id, :activation_code => user.activation_code)
