@@ -5,7 +5,7 @@ class Job < ActiveRecord::Base
   end
 
   attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, 
-                  :jobphotos_attributes, :bid_count
+                  :jobphotos_attributes, :bid_count, :start_date
 
   belongs_to :user
   belongs_to :jobtype

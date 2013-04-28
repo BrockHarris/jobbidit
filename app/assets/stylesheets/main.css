@@ -1,0 +1,1034 @@
+* {
+  font-family: "Oswald", sans-serif; }
+
+html {
+  overflow-y: scroll; }
+
+html, body {
+  height: 100%;
+  position: relative;
+  padding: 0;
+  background: #e5e5e5; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  color: #00bce4;
+  letter-spacing: 3px; }
+
+a, a:hover {
+  text-decoration: none; }
+
+ul, li {
+  list-style: none; }
+
+.whiteband {
+  background: #fff;
+  position: relative;
+  z-index: 100;
+  height: 290px; }
+
+.brand {
+  position: relative;
+  display: inline-block;
+  margin-top: 50px; }
+  .brand h1 {
+    font-size: 69.44px;
+    margin: 20px 0; }
+  .brand h5 {
+    font-size: 27.78px;
+    color: #999999;
+    position: absolute;
+    right: 0px;
+    top: 70px; }
+
+.info-nav-bar {
+  margin-top: 65px;
+  display: inline-block; }
+
+.info-nav {
+  display: inline-block;
+  position: relative;
+  z-index: 600; }
+
+.info-faq, .info-phone, .info-about {
+  background: url("sprite.png") no-repeat;
+  width: 50px;
+  height: 50px;
+  display: block;
+  cursor: pointer;
+  margin: 0 11px; }
+
+.info-faq {
+  background-position: -15px -10px; }
+
+.info-phone {
+  background-position: -85px -10px; }
+
+.info-about {
+  background-position: -155px -10px;
+  margin-right: 0px; }
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1900px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 240px;
+  left: 0;
+  z-index: 1; }
+
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;
+    /* 50% */ } }
+h2 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 50px;
+  padding: 20px;
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
+
+.call-to-actions {
+  position: relative;
+  z-index: 50; }
+
+.call-to-action {
+  background: #fff; }
+  .call-to-action h2 {
+    background: #fff; }
+  .call-to-action article {
+    margin-top: 411px;
+    width: 100%;
+    background: #fff;
+    display: table; }
+
+.info-box {
+  position: absolute;
+  right: 100%;
+  width: 545px;
+  margin-right: -37px;
+  margin-top: -2px;
+  display: none;
+  opacity: 0;
+  -webkit-transition: all 0.2s 0s;
+  -moz-transition: all 0.2s 0s;
+  -o-transition: all 0.2s 0s;
+  -ms-transition: all 0.2s 0s;
+  transition: all 0.2s 0s;
+  z-index: 500; }
+
+.box-top-border {
+  border-right: 3px solid #eed60d;
+  height: 70px;
+  width: 100%; }
+
+.faq-info, .about-info, .contact-info {
+  background: #fff;
+  border-top: 3px solid #eed60d;
+  margin-right: -3px; }
+  .faq-info h3, .about-info h3, .contact-info h3 {
+    font-size: 38.89px;
+    padding: 20px; }
+  .faq-info .text-label, .about-info .text-label, .contact-info .text-label {
+    font-size: 25px;
+    color: #00bce4;
+    display: block;
+    text-align: right;
+    line-height: 25px;
+    margin-bottom: 10px;
+    font-weight: 300; }
+  .faq-info p, .about-info p, .contact-info p {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 25px;
+    color: #7f7f7f;
+    padding: 0 20px; }
+
+.contact-info p {
+  text-align: right; }
+
+.question {
+  display: block;
+  position: relative;
+  padding-bottom: 30px; }
+
+.question-label {
+  position: absolute;
+  width: auto;
+  display: inline-block;
+  top: 0;
+  left: 40px; }
+
+.question-text {
+  width: auto;
+  display: inline-block;
+  padding-left: 60px; }
+
+.about-info {
+  padding: 20px; }
+  .about-info p {
+    margin: 20px 0; }
+
+.info-nav-about .info-box {
+  width: 700px; }
+
+.info-nav-phone .info-box {
+  width: 270px; }
+  .info-nav-phone .info-box .contact-info {
+    padding: 10px 0; }
+
+.info-nav-phone .box-top-border {
+  height: 120px; }
+
+div.show-info:hover .info-box {
+  opacity: 1;
+  display: block; }
+
+/*
+******************************************************************************************************************************************
+*******************************************************SEEKER **************************************************************
+******************************************************************************************************************************************
+*/
+.blue-back {
+  background: #00bce4;
+  padding: 60px 0; }
+  .blue-back h2, .blue-back h4 {
+    color: #fff;
+    padding: 5px 0px; }
+  .blue-back h2 {
+    display: block;
+    text-align: left; }
+  .blue-back h4 {
+    font-size: 44px;
+    line-height: 44px; }
+
+ul.tabs {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  margin: 0px; }
+  ul.tabs li {
+    display: inline-block;
+    font-size: 27.78px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    margin-bottom: 16px; }
+    ul.tabs li a {
+      background-color: #f2f2f2;
+      padding: 10px;
+      color: #ababab; }
+  ul.tabs li.active a {
+    background: #e5e5e5;
+    color: #fff; }
+
+form {
+  margin-top: 80px; }
+
+input[type="search"] {
+  width: 200px;
+  border: 2px solid #cccccc; }
+
+.logged-in-prompt {
+  float: right;
+  color: #ababab;
+  padding: 5px 0; }
+  .logged-in-prompt a {
+    color: #ababab;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    font-size: 19.44px;
+    padding: 0 5px; }
+  .logged-in-prompt a:last-child {
+    color: #00bce4;
+    font-weight: 400; }
+
+.family-bg {
+  min-height: 505px; }
+  .family-bg .form-anchor {
+    position: relative; }
+  .family-bg img {
+    width: 100%; }
+  .family-bg form.main-prompt {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 65%; }
+
+@media screen and (max-width: 1174px) {
+  .family-bg {
+    overflow: hidden; }
+    .family-bg img {
+      width: 1174px;
+      max-width: none; } }
+form.main-prompt {
+  background: #fff;
+  padding: 20px 20px;
+  box-shadow: 4px 4px 5px rgba(60, 60, 60, 0.4); }
+  form.main-prompt textarea {
+    width: 100%;
+    height: 265px;
+    resize: none;
+    font-size: 16px; }
+  form.main-prompt input[type="submit"] {
+    font-family: "Oswald", sans-serif;
+    float: right;
+    font-size: 26.11px;
+    color: #fff;
+    border: none;
+    line-height: 36.11px;
+    margin-left: 10px; }
+  form.main-prompt label {
+    font-family: "Oswald", sans-serif;
+    color: #00bce4;
+    font-weight: 300;
+    font-size: 20.78px;
+    margin: 20px 0 0px; }
+  form.main-prompt .signup-signin, form.main-prompt .next, form.main-prompt .sign-in {
+    background: #eed60d; }
+  form.main-prompt input[type="submit"].next {
+    float: none;
+    display: block;
+    margin-left: 0; }
+  form.main-prompt h5 {
+    font-size: 38.89px;
+    line-height: 38.89px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 30px; }
+  form.main-prompt input[type='text'], form.main-prompt input[type='password'] {
+    width: 300px;
+    border: 2px solid #cccccc;
+    height: 32px;
+    margin: 10px 0;
+    display: block; }
+
+#request-free-quote.main-prompt {
+  width: auto; }
+
+#sign-in.main-prompt input[type='text'], #sign-in.main-prompt input[type='password'] {
+  width: 100%;
+  height: 70px;
+  border: 2px solid #00bce4;
+  box-shadow: inset 0px 0px 5px rgba(0, 188, 228, 0.5);
+  font-size: 18.89px; }
+#sign-in.main-prompt input[type="submit"].sign-in {
+  margin-top: 20px; }
+
+#sign-up.main-prompt {
+  padding: 20px 60px 30px; }
+  #sign-up.main-prompt label {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    float: left;
+    height: 70px;
+    width: 30%;
+    clear: both; }
+  #sign-up.main-prompt input[type='text'], #sign-up.main-prompt input[type='password'] {
+    float: right;
+    width: 65%;
+    height: 70px;
+    border: 2px solid #00bce4;
+    box-shadow: inset 0px 0px 5px rgba(0, 188, 228, 0.5);
+    font-size: 18.89px;
+    margin-top: 0px;
+    margin-bottom: 20px; }
+  #sign-up.main-prompt input[type='submit'].next {
+    float: right; }
+
+.family-bg .call-to-action {
+  position: absolute;
+  top: 460px;
+  background: #fff;
+  z-index: 600; }
+  .family-bg .call-to-action h2 {
+    font-size: 38.89px; }
+
+.password-recovery {
+  font-size: 10.44px;
+  color: #7f7f7f;
+  display: block;
+  float: right; }
+
+.grey-band {
+  background: #e5e5e5;
+  padding-bottom: 100px; }
+  .grey-band h2 {
+    color: #898989;
+    font-size: 50px;
+    line-height: 50px;
+    padding-left: 0px;
+    font-weight: 400;
+    margin: 50px 0px;
+    display: block;
+    text-align: left; }
+  .grey-band .steps-handler {
+    border-right: 1px solid white; }
+    .grey-band .steps-handler h2 {
+      color: #00bce4;
+      margin-top: 20px;
+      font-size: 69.44px;
+      text-align: center; }
+    .grey-band .steps-handler h5 {
+      color: #898989;
+      padding: 0px 5px;
+      font-size: 33.33px;
+      line-height: 33.33px;
+      letter-spacing: 1px;
+      font-weight: 400;
+      margin: 20px auto;
+      min-height: 70px; }
+    .grey-band .steps-handler p {
+      margin: 20px auto;
+      padding: 10px 5px 40px;
+      color: #898989;
+      font-weight: 300;
+      font-size: 25px; }
+  .grey-band .steps-handler.last {
+    border: none; }
+
+span.flag, span.messages, span.menu-arrow {
+  background: url("message-sprites.png") no-repeat;
+  width: 60px;
+  height: 60px;
+  display: inline-block; }
+
+span.flag {
+  background-position: 10px 0px; }
+
+.flag-message-prompt.active span.flag {
+  background-position: 10px -50px; }
+
+span.messages {
+  background-position: -50px 0px; }
+
+span.menu-arrow {
+  background-position: -24px -110px;
+  width: 20px;
+  height: 20px; }
+
+.menu-arrow, .username {
+  margin-top: 20px;
+  float: left;
+  margin-left: 5px; }
+
+.flag-message-prompt {
+  position: relative; }
+  .flag-message-prompt div {
+    position: absolute;
+    display: none;
+    right: 18px;
+    top: 50px;
+    width: 250px;
+    background: #f3f1f1;
+    color: #ababab;
+    text-align: center;
+    font-size: 22.22px;
+    padding: 10px 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); }
+
+.flag-message-prompt.active div {
+  display: block; }
+
+span.username {
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-size: 27.78px;
+  display: block;
+  margin-left: 50px; }
+
+.admin-options ul li {
+  float: left;
+  margin-left: 5px; }
+
+.admin-menu-select {
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 50px; }
+  .admin-menu-select ul {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px; }
+    .admin-menu-select ul li {
+      width: 100%;
+      padding: 5px;
+      float: right; }
+    .admin-menu-select ul li:nth-child(odd) {
+      background: #f3f1f1;
+      color: #ababab; }
+    .admin-menu-select ul li:nth-child(even) {
+      background: #e5e5e5;
+      color: #fff; }
+
+.admin-menu-select:hover ul {
+  display: block; }
+  .admin-menu-select:hover ul li:hover {
+    background: #FFF;
+    color: #666; }
+
+.dashboard .job-posts {
+  margin-top: 80px;
+  margin-bottom: 40px; }
+.dashboard h1 {
+  font-size: 38.5px;
+  font-weight: 700;
+  margin: 20px 0px; }
+.dashboard .yellow {
+  color: #eed60d; }
+.dashboard .dash-header {
+  background: #fff;
+  padding: 40px 20px;
+  border-bottom: 1px solid #dadada; }
+.dashboard .add-info {
+  font-size: 33.33px;
+  color: #000;
+  font-weight: 400;
+  display: block;
+  line-height: 33.33px;
+  margin: 5px 0; }
+.dashboard .dashboard-table {
+  background: #f2f2f2;
+  padding: 20px 20px 0; }
+  .dashboard .dashboard-table a {
+    position: relative; }
+  .dashboard .dashboard-table .message-count {
+    position: absolute;
+    top: -10px;
+    left: -10px; }
+  .dashboard .dashboard-table table {
+    width: 100%; }
+  .dashboard .dashboard-table caption {
+    text-align: left;
+    font-size: 27.78px;
+    background: #f2f2f2;
+    padding: 20px 0; }
+  .dashboard .dashboard-table th, .dashboard .dashboard-table td {
+    font-size: 25px;
+    padding: 20px 0;
+    font-weight: 300; }
+    .dashboard .dashboard-table th a, .dashboard .dashboard-table td a {
+      font-weight: 300; }
+  .dashboard .dashboard-table th {
+    text-align: left; }
+    .dashboard .dashboard-table th a {
+      color: #ababab; }
+  .dashboard .dashboard-table td {
+    text-align: right; }
+    .dashboard .dashboard-table td a {
+      color: #00bce4; }
+    .dashboard .dashboard-table td img {
+      max-width: none; }
+  .dashboard .dashboard-table tr {
+    border-top: 1px solid #dadada; }
+  .dashboard .dashboard-table tr:first-child {
+    border: none; }
+.dashboard .active-bidding {
+  margin-bottom: 50px; }
+  .dashboard .active-bidding td {
+    text-align: center;
+    margin: 0;
+    padding: 0 15px; }
+    .dashboard .active-bidding td a {
+      color: #ababab; }
+    .dashboard .active-bidding td .accept {
+      color: #00bce4; }
+    .dashboard .active-bidding td .message-job {
+      width: 33px; }
+    .dashboard .active-bidding td .stamp {
+      width: 61px; }
+.dashboard .active-bidding-header {
+  background: #fff;
+  padding: 40px 20px; }
+  .dashboard .active-bidding-header h4, .dashboard .active-bidding-header h5 {
+    letter-spacing: 1px;
+    font-size: 25px; }
+  .dashboard .active-bidding-header h4 {
+    color: #030303;
+    margin-bottom: 10px; }
+  .dashboard .active-bidding-header h5 {
+    color: #00bce4;
+    margin-bottom: 50px; }
+  .dashboard .active-bidding-header .date, .dashboard .active-bidding-header p {
+    color: #ababab; }
+  .dashboard .active-bidding-header .date {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    display: block; }
+  .dashboard .active-bidding-header p {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 1px; }
+
+.job-profiles {
+  margin-top: 80px;
+  background: #fff; }
+  .job-profiles h2 {
+    font-size: 30.56px;
+    color: #000;
+    font-weight: 400; }
+  .job-profiles h3, .job-profiles img {
+    font-size: 25px;
+    line-height: 25px;
+    padding: 20px 20px 0px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #000; }
+    .job-profiles h3 a, .job-profiles img a {
+      color: #00bce4; }
+  .job-profiles .profile-pic {
+    position: relative; }
+    .job-profiles .profile-pic img {
+      padding: 20px; }
+  .job-profiles hr {
+    width: 96.5%;
+    margin: 0 auto; }
+  .job-profiles .span4 h3 {
+    color: #ababab; }
+  .job-profiles .search-filters {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    z-index: 500; }
+    .job-profiles .search-filters span {
+      color: #b1b1b1;
+      font-size: 22px;
+      font-weight: 300; }
+    .job-profiles .search-filters ul {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 50px;
+      margin: 0;
+      width: 100%; }
+    .job-profiles .search-filters li {
+      width: 100%;
+      padding: 5px; }
+    .job-profiles .search-filters li:nth-child(odd) {
+      background: #f3f1f1; }
+      .job-profiles .search-filters li:nth-child(odd) a {
+        color: #ababab; }
+    .job-profiles .search-filters li:nth-child(even) {
+      background: #e5e5e5; }
+      .job-profiles .search-filters li:nth-child(even) a {
+        color: #fff; }
+    .job-profiles .search-filters span.menu-arrow {
+      background-position: -70px -113px;
+      float: none; }
+
+.search-filters:hover ul {
+  display: block; }
+  .search-filters:hover ul li:hover {
+    background: #FFF; }
+    .search-filters:hover ul li:hover a {
+      color: #666; }
+
+.profile-view {
+  margin-top: 60px; }
+  .profile-view .profile-header {
+    background: #fff;
+    border-bottom: 1px solid #cccccc; }
+    .profile-view .profile-header .profile-pic {
+      position: relative;
+      padding-bottom: 60px; }
+    .profile-view .profile-header h1, .profile-view .profile-header h3 {
+      color: #000;
+      letter-spacing: 1px;
+      padding-left: 20px; }
+  .profile-view .profile-contact {
+    background: #f2f2f2;
+    margin-bottom: 60px; }
+    .profile-view .profile-contact li {
+      color: #ababab;
+      font-size: 27.78px;
+      line-height: 27.78px;
+      padding: 20px 0px; }
+      .profile-view .profile-contact li a {
+        color: #00bce4; }
+  .profile-view h3, .profile-view h4 {
+    letter-spacing: 1px;
+    color: #000;
+    padding: 20px; }
+  .profile-view h3 {
+    font-size: 33.33px; }
+  .profile-view h4 {
+    font-size: 27.78px; }
+  .profile-view p {
+    font-size: 25px;
+    color: #ababab;
+    line-height: 25px;
+    padding: 0px 20px 20px;
+    letter-spacing: 1px;
+    font-weight: 300; }
+  .profile-view .profile-about, .profile-view .profile-past-work {
+    background: #fff;
+    margin-bottom: 60px; }
+  .profile-view img {
+    padding: 20px; }
+
+/*
+******************************************************************************************************************************************
+*******************************************************PROVIDER **************************************************************
+******************************************************************************************************************************************
+*/
+.blue-back #sign-up.main-prompt {
+  padding: 20px 60px 60px; }
+.blue-back form.main-prompt {
+  width: 100%; }
+.blue-back h1 {
+  color: #fff;
+  margin: 80px 20px;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 700; }
+.blue-back div.img-handler {
+  min-height: 387px;
+  display: table;
+  width: 100%;
+  padding: 20px 0 0; }
+  .blue-back div.img-handler div {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle; }
+  .blue-back div.img-handler img {
+    display: block;
+    margin: 0 auto; }
+.blue-back .plan-handler {
+  border-right: 1px solid white; }
+  .blue-back .plan-handler h2, .blue-back .plan-handler p {
+    padding: 20px;
+    color: #fff; }
+  .blue-back .plan-handler h2 {
+    font-size: 38.89px; }
+  .blue-back .plan-handler p {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 25px;
+    letter-spacing: 2px;
+    margin-bottom: 30px; }
+.blue-back .span4:last-child .plan-handler {
+  border: none; }
+.blue-back a {
+  color: #00bce4;
+  font-size: 37px;
+  background: #fff;
+  padding: 0px 10px;
+  margin-left: 20px; }
+.blue-back .cost {
+  float: right;
+  color: #fff;
+  font-weight: 300;
+  margin-right: 20px;
+  font-size: 27.78px; }
+
+.general-account {
+  background: #f2f2f2;
+  margin-top: 60px; }
+  .general-account form {
+    margin-top: 0px; }
+  .general-account h3 {
+    color: #000;
+    padding: 20px; }
+  .general-account h4, .general-account label {
+    font-size: 25px;
+    line-height: 25px;
+    color: #ababab;
+    font-weight: 300;
+    margin-left: 20px; }
+  .general-account .account-settings {
+    background: #fff;
+    padding: 20px; }
+    .general-account .account-settings table {
+      width: 100%;
+      background: #fff;
+      text-align: left; }
+      .general-account .account-settings table td, .general-account .account-settings table th {
+        font-size: 25px;
+        padding: 20px;
+        color: #ababab;
+        font-weight: 300; }
+        .general-account .account-settings table td a, .general-account .account-settings table th a {
+          color: #00bce4; }
+      .general-account .account-settings table tr {
+        border-top: 1px solid #f2f2f2; }
+      .general-account .account-settings table tr:first-child {
+        border: none; }
+  .general-account .span7 .row-fluid {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    .general-account .span7 .row-fluid input {
+      height: 35px;
+      border: 2px solid #cfcfcf;
+      box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25);
+      margin-left: 20px; }
+    .general-account .span7 .row-fluid input[type="submit"] {
+      font-family: "Oswald", sans-serif;
+      background: #eed60d;
+      border: none;
+      box-shadow: none;
+      color: #fff;
+      font-size: 27.78px;
+      line-height: 27.78px;
+      padding: 10px;
+      height: auto;
+      margin-left: 25px; }
+
+.job-board {
+  background: #fff;
+  margin-top: 60px; }
+  .job-board h3 {
+    font-size: 27.78px;
+    color: #000;
+    padding: 20px;
+    margin-bottom: 0; }
+  .job-board table {
+    width: 100%; }
+    .job-board table th, .job-board table td {
+      text-align: left;
+      font-size: 25px;
+      color: #ababab;
+      font-weight: 300;
+      padding: 20px 0px;
+      padding-right: 20px; }
+    .job-board table tr {
+      border-top: 1px solid #f2f2f2; }
+    .job-board table tr:first-child {
+      border: none; }
+      .job-board table tr:first-child th {
+        color: #000;
+        font-weight: 400; }
+  .job-board .job-postings {
+    padding: 0px 20px; }
+  .job-board tr.visible-phone {
+    border: none; }
+
+.improve-profile {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 40px; }
+  .improve-profile form {
+    margin-top: 10px; }
+  .improve-profile select {
+    background: white;
+    margin-left: 10px;
+    color: #999; }
+  .improve-profile h1, .improve-profile h3 {
+    padding: 5px 10px;
+    margin: 0; }
+  .improve-profile h3 {
+    font-size: 27.78px;
+    line-height: 27.78px; }
+  .improve-profile h1 {
+    font-size: 38.89px;
+    line-height: 38.89px; }
+  .improve-profile input {
+    height: 65px;
+    border: 2px solid #cfcfcf;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25);
+    margin: 10px; }
+  .improve-profile input[type="submit"] {
+    display: inline-block;
+    font-family: "Oswald", sans-serif;
+    background: #eed60d;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 27.78px;
+    line-height: 27.78px;
+    padding: 10px;
+    height: auto; }
+  .improve-profile input[type="submit"]:last-child {
+    background: #e5e5e5; }
+
+.profile-view .pen {
+  height: 32px;
+  width: 23px;
+  background: url("pens.png") no-repeat;
+  background-position: -19px -5px;
+  display: inline-block;
+  margin-right: 10px; }
+.profile-view li .pen {
+  background-position: -90px -5px; }
+.profile-view .profile-header {
+  padding-bottom: 60px; }
+  .profile-view .profile-header .camera {
+    position: absolute;
+    top: 10px;
+    left: 10px; }
+  .profile-view .profile-header .edit {
+    color: #fff;
+    font-size: 27.78px;
+    line-height: 27.78px;
+    padding: 10px;
+    padding-right: 30px;
+    background: #eed60d;
+    position: relative;
+    margin-left: 200px;
+    display: inline-block;
+    margin-top: 20px; }
+    .profile-view .profile-header .edit .menu-arrow {
+      position: absolute;
+      margin-top: 0px; }
+  .profile-view .profile-header .credential-stamp {
+    float: right;
+    margin-top: -110px;
+    margin-right: 100px; }
+
+.profile-past-work, .profile-about {
+  padding: 20px; }
+
+.grey-camera {
+  display: inline-block;
+  width: 45px;
+  height: 30px;
+  background: url("camera-icon-grey.png") no-repeat;
+  background-position: 0px 1px;
+  margin-left: 10px; }
+
+/*
+******************************************************************************************************************************************
+*******************************************************MOBILE MEDIA QUERIES **************************************************************
+******************************************************************************************************************************************
+*/
+@media screen and (max-width: 767px) {
+  .call-to-action article {
+    margin-top: 50px;
+    margin-bottom: 50px; }
+
+  h2 {
+    display: block; }
+
+  .family-bg form.main-prompt, form.main-prompt {
+    position: relative;
+    margin: 0;
+    width: auto; }
+
+  .family-bg {
+    min-height: 200px; }
+
+  .family-bg .call-to-action {
+    margin-top: 20px;
+    position: relative;
+    top: 0px; }
+
+  .grey-band .steps-handler {
+    border-right: none;
+    border-bottom: 1px solid white; }
+
+  .grey-band h2 {
+    padding-left: 10px; }
+
+  .blue-back h2, .blue-back h4 {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+  form {
+    margin-top: 10px; }
+
+  .whiteband {
+    height: 420px; }
+
+  .faq-info, .about-info {
+    position: absolute; }
+
+  .faq-info {
+    width: 72.35%;
+    left: 60%; }
+
+  .about-info {
+    width: 54.35%;
+    left: 44%; }
+
+  form.main-prompt#job-description {
+    padding-bottom: 50px; }
+
+  #sign-up.main-prompt {
+    padding: 20px 10px 50px; }
+
+  .flag-message-prompt div {
+    left: 40px; }
+
+  .dashboard .active-bidding td {
+    padding: 0px 8px 10px;
+    font-size: 18px; }
+
+  .dashboard .dashboard-table th {
+    padding: 10px 0; }
+
+  .dashboard .active-bidding tr.visible-phone {
+    border-bottom: 1px solid #dadada; }
+
+  .dashboard .active-bidding tr.visible-phone:last-child {
+    border-bottom: none; }
+
+  .dashboard .dashboard-table tr {
+    border: none; }
+
+  .job-profiles h3, .job-profiles img {
+    padding: 0;
+    display: inline-block; }
+  .job-profiles h3 {
+    margin-top: 10px;
+    padding: 0 20px; }
+  .job-profiles img {
+    margin-top: -15px; }
+  .job-profiles .profile-pic img {
+    margin: 0px; }
+
+  h2 {
+    text-align: left; }
+
+  .job-profiles .search-filters {
+    margin-left: 20px;
+    margin-top: 0px; }
+
+  .job-profiles h2 {
+    padding-bottom: 0px; }
+
+  .profile-view h1, .profile-view h3, .profile-view h4, .profile-view p, .profile-view img, .profile-view ul, .profile-view li {
+    padding: 10px;
+    margin: 0px; }
+  .profile-view .profile-header h1, .profile-view .profile-header h3 {
+    padding: 10px;
+    margin: 0px; }
+  .profile-view .profile-header .profile-pic {
+    padding-bottom: 0px; }
+
+  .blue-back.membership .plan-handler {
+    border: none; }
+
+  .blue-back.membership .span4 {
+    border-bottom: 1px solid white;
+    padding-bottom: 40px; }
+
+  .blue-back.membership .span4:last-child {
+    border: none; }
+
+  .general-account .account-settings {
+    padding: 0; }
+    .general-account .account-settings table th, .general-account .account-settings table td {
+      padding: 10px 5px;
+      font-size: 20px; }
+
+  .profile-view .profile-header .edit {
+    position: relative;
+    margin-left: 10px; }
+  .profile-view .profile-header .credential-stamp {
+    float: none;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px; } }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327012931) do
+ActiveRecord::Schema.define(:version => 20130405220208) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130327012931) do
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
     t.integer  "bid_count"
+    t.datetime "start_date"
   end
 
   add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
@@ -149,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20130327012931) do
     t.datetime "updated_at",                                                 :null => false
     t.datetime "deleted_at"
     t.string   "membership"
+    t.string   "contractor_type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -4,13 +4,20 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.text_field :title, :placeholder => "Title" %><br/>
   <%= f.text_field :description, :placeholder => "Description" %> <br/>
-  <%= f.select :duration, [['3 Days','3'],['1 Week','7'],['2 Weeks','14'],['1 Month','28']] %><br/>
 
+  <strong>Job listing duration:</strong><br/>
+  <%= f.select :duration, [['12 Hours','12'],['1 Day','24'],['2 Days','48']] %><br/>
+
+  <strong>Job start time:</strong><br/>
+  <%= f.datepicker "start_date" %><br/>
+
+  <strong>Job end time:</strong><br/>
+  <%= f.datepicker "expire_date" %><br/>
+
+  <strong>Job category:</strong><br/>
   <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
 
-  <%# f.select :category, [['Category 1','category1'],['Category 2','category2'],['Category 3','category3']] %><br/>
-  <%# f.hidden_field :expire_date, :value => Time.now + "#{duration}".days %>
-
+  <h4>Add photos:</h4>
   <%= f.fields_for :jobphotos do |builder| %>
     <%= render "jobphoto_fields", :f => builder %>
   <% end %>

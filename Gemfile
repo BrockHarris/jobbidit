@@ -9,6 +9,7 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
+gem 'jquery_datepicker'
 gem 'jquery-ui-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development

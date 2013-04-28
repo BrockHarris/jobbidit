@@ -9,5 +9,18 @@
 			<%= link_to "Admin", admin_path, :class => "footer_links" %>
     </div>
   </nav>
+
+  <ul class="nav pull-right">
+        <% if current_user %>
+          <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to "Contractors", contractors_path %></li>
+          <li><%= link_to "Homeowners", homeowners_path %></li>
+        <% end %>
+        <% if admin_user %>
+          <li><%= link_to "Admin Logout", adminsignout_path, :method => :delete %></li>
+        <% end %>
+      </ul>
+
 </footer>
 <%# debug session if Rails.env=="development" %>

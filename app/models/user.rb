@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :mode
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
-                  :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership
+                  :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership,
+                  :contractor_type
 
   before_save :prepare_password
 

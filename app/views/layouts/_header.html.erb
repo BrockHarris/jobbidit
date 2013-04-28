@@ -1,23 +1,157 @@
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="<%= root_url%>">JobBidit</a>
-    <ul class="nav pull-right">
-      <% if current_user %>
-        <li><%= link_to "Jobs", jobs_path %></li>
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Messages", inbox_path %></li>
-      	<li><%= link_to "Settings", settings_path %></li>
-        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-      <% else %>
-        <li><%= link_to "Contractors", contractors_path %></li>
-        <li><%= link_to "Homeowners", homeowners_path %></li>
-      <% end %>
-      <% if admin_user %>
-        <li><%= link_to "Admin Logout", adminsignout_path, :method => :delete %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<section class="whiteband">
+  <section class="container">
+    <section class="row">
+
+      <section class="span4">
+        <section class="brand">
+          <h1>Wrenchmark</h1>
+          <h5>tagline here</h5>
+        </section>
+      </section>
+
+      
+
+      <section class="span4 offset4">
+        <section class="info-nav-bar pull-right">
+          <article class="info-nav info-nav-faq">
+            <div class="show-info">
+              <span class="info-faq"></span>
+              
+              <article class="info-box">
+                <article class="box-top-border"></article>
+                <article class="faq-info">
+                  <h3>FAQ</h3>
+
+                  <div class="question">
+                    <div class="question-label">
+                      <span class="text-label">Q.</span>
+                      <span class="text-label">A.</span>
+                    </div>
+                    <div class="question-text">
+                      <p>Lorem ipsum dolor sit amet?</p>
+                      <p>Consectetur adipiscing elit. Nullam in odio in lorem luct accumsan. Nulla facilisi. Nulla facilisi.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="question">
+                    <div class="question-label">
+                      <span class="text-label">Q.</span>
+                      <span class="text-label">A.</span>
+                    </div>
+                    <div class="question-text">
+                      <p>Lorem ipsum dolor sit amet?</p>
+                      <p>Consectetur adipiscing elit. Nullam in odio in lorem luct accumsan. Nulla facilisi. Nulla facilisi.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="question">
+                    <div class="question-label">
+                      <span class="text-label">Q.</span>
+                      <span class="text-label">A.</span>
+                    </div>
+                    <div class="question-text">
+                      <p>Lorem ipsum dolor sit amet?</p>
+                      <p>Consectetur adipiscing elit. Nullam in odio in lorem luct accumsan. Nulla facilisi. Nulla facilisi.</p>
+                    </div>
+                  </div>
+                </article>
+              </article>
+            </div>
+          </article>
+                        
+          <article class="info-nav info-nav-phone">
+            <div class="show-info">
+              <span class="info-phone"></span>
+              <article class="info-box">
+                <article class="box-top-border"></article>
+                <article class="contact-info">
+                  <p>(778) 806-5555</p>
+                  <p>michael@projectx.ca</p>
+                  <p>info@projectx.ca</p>                                     
+                </article>
+              </article>
+            </div>
+          </article>        
+                        
+          <article class="info-nav info-nav-about">
+            <div class="show-info">
+              <span class="info-about"></span>
+              <article class="info-box">
+                <article class="box-top-border"></article>
+                <article class="about-info">
+                  <h3>What is Wrenchmark?</h3>
+                  <p>
+                    Project X is lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in odio in lorem luctus accumsan. Nulla facilisi. Nulla facilisi. Aenean faucibus convallis metus, eu vehicula tortor varius ac. Duis vel arcu est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                  <p>
+                    Aliquam aliquet tempor bibendum. Donec purus purus, tincidunt rutrum tempus eu, gravida ut odio. Maecenas viverra nulla ut turpis volutpat tempus eget eu lectus. Pellentesque at adipiscing nulla. Ut dapibus, lorem placerat rutrum condimentum, mauris velit dapibus massa, sed semper purus tellus a dui.
+                  </p>
+                </article>
+              </article>
+            </div>
+          </article>
+        </section>
+      </section>
+    </section>
+    
+    <section class="row">
+      <section class="span12">
+        <form class="pull-right">
+          <input type="search" name="googlesearch" placeholder="Search...">
+          <p>
+            <span class="logged-in-prompt">
+              <a href="#">Logged In</a>
+            </span>
+          </p>
+        </form>
+      </section>
+    </section>
+    
+    <section class="row">
+      <section class="span12 tab-handler">
+        <ul class="tabs">
+          <li class='active'>
+            <%= link_to "Profile", current_user %>
+          </li>
+          <li>
+            <%= link_to "Job Board", jobs_path %>
+          </li>
+        </ul> 
+      </section>
+    </section>
+  </section>
+</section>
+
+<section class="container dashboard">
+  <section class="row">
+    <article class="span12">
+      <article class="admin-options pull-right">
+        <ul>
+          <li> 
+            <a href="inbox"><span class="flag active"></span></a>
+          </li>
+          <li>
+            <a href="inbox"><span class="messages"></span></a>
+          </li>
+          <li></li>
+          <li>
+            <div class="admin-menu-select">
+              <span class="username">John Smith</span>
+              <span class="menu-arrow"></span>
+              <div class="admin-menu">
+                <ul>
+                  <li><%= link_to "Change Password", settings_path %></li>
+                  <li><%= link_to "Account Settings", settings_path %></li>
+                </ul>               
+              </div>
+            </div>
+          </li>
+        </ul>
+      </article>
+    </article>
+  </section>
+</section>
+
 <% flash.each do |key, value| %>
   <div id="flash" class="alert alert-info msg_format"><%= value %></div>
 <% end %>

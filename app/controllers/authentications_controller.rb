@@ -16,6 +16,7 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = "Welcome back!"
         sign_in_and_redirect_back_or_default(authentication.user, user_path(authentication.user))
       end
+      
     elsif current_user
       #the user is logged in and trying to add another authentication
       current_user.authentications.create(:provider => @omniauth['provider'], :uid => @omniauth['uid'])
