@@ -8,6 +8,8 @@ class AuthenticationsController < ApplicationController
   def create
     @omniauth = request.env["omniauth.auth"]
     authentication = Authentication.where(:provider=>@omniauth['provider'], :token=>@omniauth['credentials']['token'],:uid=>@omniauth['uid']).where("user_id IS NOT NULL").first
+    tokenless_authentication = Authentication.where(:provider=>@omniauth['provider'], :uid=>@omniauth['uid']).where("user_id IS NOT NULL").first
+    
     if authentication
       if authentication.user.pending?
         flash[:notice] = "Please click the link in your activation email before logging in with Facebook!"
@@ -16,7 +18,16 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = "Welcome back!"
         sign_in_and_redirect_back_or_default(authentication.user, user_path(authentication.user))
       end
-      
+
+    elsif tokenless_authentication #work-around to fix changing tokens
+      if tokenless_authentication.user.pending?
+        flash[:notice] = "Please click the link in your activation email before logging in with Facebook!"
+        redirect_to root_url
+      else
+        flash[:notice] = "Welcome back!"
+        sign_in_and_redirect_back_or_default(tokenless_authentication.user, user_path(tokenless_authentication.user))
+      end
+
     elsif current_user
       #the user is logged in and trying to add another authentication
       current_user.authentications.create(:provider => @omniauth['provider'], :uid => @omniauth['uid'])

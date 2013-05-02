@@ -15,10 +15,10 @@ Jobbidit::Application.routes.draw do
   match '/fbform', :to => 'users#fbform'
   match '/inbox', :to => 'pmessages#index'
   match '/admin', :to => 'pages#admin_panel'
+  match "/auth/:provider/callback" => "authentications#create"
   match "/reset/:id/:reset_code", :to=>"users#reset", :as=>"reset"
   match '/activate/:id/:activation_code', :to=>"users#activation", :as=>"activate"
   match "/activate_user/:id", :to=>"users#activate", :as=>"activate_user"
-  match "/auth/:provider/callback" => "authentications#create"
   match "/auth/failure" => "pages#home"
   match "/welcome_user/:id", :to=>"users#welcome", :as=>"welcome_user"
   match "complete_session_authentication_path", :to=>"authentications#complete_session_authentication", :as=>:complete_session_authentication
