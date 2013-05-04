@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405220208) do
+ActiveRecord::Schema.define(:version => 20130504214302) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -65,15 +65,15 @@ ActiveRecord::Schema.define(:version => 20130405220208) do
 
   create_table "jobs", :force => true do |t|
     t.integer  "user_id"
-    t.text     "title",       :limit => 255
-    t.text     "description", :limit => 255
-    t.text     "category",    :limit => 255
+    t.string   "title"
+    t.string   "description"
+    t.string   "category"
     t.integer  "current_bid"
     t.integer  "duration"
     t.datetime "expire_date"
-    t.boolean  "open",                       :default => true
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.boolean  "open",        :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "bid_count"
     t.datetime "start_date"
   end
