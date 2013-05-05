@@ -1,13 +1,24 @@
-<h3>HOME PAGE (not signed in)</h3>
+<section class="main-bg">
+	<section class="container">
+		<section class="row call-to-actions">
+			<a class="call-to-action" href="#">
+				<section class="span5">
+					<article>
+						<h2>Service Provider</h2>
+					</article>
+				</section>
+			</a>
+			<a class="call-to-action" href="#">
+				<section class="span5 offset2">
+					<article>
+						<h2 class="">Service Seeker</h2>
+					</article>
+				</section>
+			</a>
+		</section>
+	</section>
+	<%= image_tag "splash-background-image.jpg", :class=>"bg" %>
+</section>
 
 <%= link_to "Sign in with Facebook", "/auth/facebook" %>
 
-<%= form_tag sessions_path do %>
-	Username/Email <br/>
-	<%= text_field_tag :login, params[:login] %> <br/>
-	Password <br/>
-  <%= password_field_tag :password, ""%> <br/>
-  <%= submit_tag "Sign in" %>
-<% end %>
-<p/>
-<%= link_to "Forgot your password?", assist_path %>

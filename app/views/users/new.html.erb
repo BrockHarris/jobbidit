@@ -1,0 +1,28 @@
+<section class="blue-back">
+	<section class="container form-anchor">
+		<section class="row">
+		  <article class="span8">
+		  	<%= form_for @user, :class=>"main-prompt", :id=>"sign-up" do |f| %>
+		  		<%= render 'shared/error_messages', :object => f.object %>
+					<h5>Basic Info</h5>
+					<%= label_tag :firstname, 'First Name' %>	        		
+					<%= f.text_field :firstname, :id=>"sign-up-first-name" %>
+		
+					<%= label_tag :lastname, 'Last Name' %>	        		
+					<%= f.text_field :lastname, :id=>"sign-up-last-name" %>
+		
+					<%= label_tag :email, 'Email' %>	        		
+					<%= f.text_field :email, :id=>"sign-up-email" %>
+		
+					<%= label_tag :password, 'Password' %>			        		
+				  <%= f.password_field :password, :id=>"sign-up-password" %>
+					
+					<%= label_tag :password_confirmation, 'Verify Password' %>	
+					<%= f.password_field :password_confirmation, :id=>"sign-up-password-verify" %>
+					<div class="clearfix"></div>
+					<%= f.submit 'Next', :class=>"next" %>
+		    <% end %>
+		  </article>
+		</section>
+	</section>	
+</section>

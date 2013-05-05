@@ -1,0 +1,25 @@
+<section class="container form-anchor">
+	<section class="row">
+		<article class="span8">
+
+		  <%= form_tag sessions_path, :class=>"main-prompt", :id=>"sign-in" do %>
+		    <h5>Sign in</h5>
+			  <%= text_field_tag :login, params[:login], :id=>"sign-in-email", :placeholder=>"Email" %>
+				
+				<%= password_field_tag :password, :id=>"sign-in-password" %>
+				
+				<%= submit_tag "Sign in", :class=>"sign-in" %>
+			  <div class="clearfix"></div>
+			  <a href="/assist"><span class="password-recovery">Password Recovery</span></a>
+			<% end %>
+			
+			<a class="call-to-action" href="/signup"><h2>Sign Up Now</h2></a>
+		</article>
+	</section>
+</section>	
+
+<section class="container">
+	<section class="row">
+		<%= image_tag "house-drawing.png", :class=>"pull-right house-drawing", :size=>"916x382", :alt=>"house-drawing" %>
+	</section>
+</section>		        	

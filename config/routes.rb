@@ -7,6 +7,7 @@ Jobbidit::Application.routes.draw do
   match '/privacypolicy',  :to => 'pages#privacypolicy'
   match '/contact',  :to => 'pages#contact'
   match '/signin',  :to => 'sessions#new'
+  match '/signup',  :to => 'users#new'
   match '/signout', :to => 'sessions#destroy'
   match '/adminsignout', :to => 'adminsessions#destroy'
   match '/usertype', :to => 'users#usertype'
