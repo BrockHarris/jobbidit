@@ -1,0 +1,91 @@
+<% if current_user.role == 'provider' %>
+	<section class="container dashboard">
+		<section class="row">
+			<article class="span12">
+				<article class="admin-options pull-right">
+			  	<ul>
+			    	<li> 
+							<% unless user_messages(current_user).empty? %>			        
+			       		<a href="#">
+			        		<div class="flag-message-prompt active">			        	
+					       		<span class="flag"></span>
+					        	<div><span><%= user_messages(current_user).count %> New Messages!</span></div>
+				        	</div>	        
+				    		</a>
+							<% else %>		        
+								<a href="#">
+							  	<div class="flag-message-prompt">			        	
+								  	<span class="flag"></span><div></div>
+							  	</div>
+								</a>
+							<% end %>	        
+			    	</li>
+			    
+			    	<li><a href="#"><span class="messages"></span></a></li>
+			       
+			      <li></li>
+			      
+			      <li>
+			       	<div class="admin-menu-select">
+				        <span class="username"><%= current_user.username %></span>
+				       	<span class="menu-arrow"></span>
+				        <div class="admin-menu">
+					        <ul>
+						    		<li><%= link_to "Settings", settings_path %></li>
+						    		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+					    		</ul>				        
+				        </div>
+				      </div>
+			      </li>
+			    </ul>
+				</article>
+			</article>
+		</section>
+	<!-- closing section tag in views -->	
+
+<% else %>
+	
+	<section class="container dashboard">
+		<section class="row">
+			<article class="span12">
+			  <article class="admin-options pull-right">
+			    <ul>
+			      <li> 
+							<% unless user_messages(current_user).empty? %>			        
+			       		<a href="#">
+			        		<div class="flag-message-prompt active">			        	
+					       		<span class="flag"></span>
+					        	<div><span><%= user_messages(current_user).count %> New Messages!</span></div>
+				        	</div>	        
+				    		</a>
+							<% else %>		        
+								<a href="#">
+							  	<div class="flag-message-prompt">			        	
+								  	<span class="flag"></span><div></div>
+							  	</div>
+								</a>
+							<% end %>	          
+			      </li>
+
+			      <li><a href="#"><span class="messages"></span></a></li>
+			       
+			      <li></li>
+			      
+			      <li>
+			       	<div class="admin-menu-select">
+				        <span class="username"><%= current_user.username %></span>
+				       	<span class="menu-arrow"></span>
+				        <div class="admin-menu">
+					        <ul>
+						    		<li><%= link_to "Settings", settings_path %></li>
+						    		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+					    		</ul>				        
+				        </div>
+				      </div>
+			      </li>
+			    </ul>
+			  </article>
+	    </article>
+		</section>
+	<!-- closing section tag in views -->	
+<% end %>

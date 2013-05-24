@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
+
+  searchable do
+    text :email, :firstname, :lastname, :city, :state, :zip, :username
+  end
+
   has_many :authentications, :dependent => :destroy
   has_many :jobs
+  has_many :pastworks
   has_many :bids
   has_many :comments
   has_many :pmessages, :dependent => :destroy
@@ -9,8 +15,8 @@ class User < ActiveRecord::Base
                     :styles => {
                     :thumb => "25x25#",
                     :small=> "50x50#",
-                    :medium=> "100x100#",
-                    :large  => "200x200#" },
+                    :medium=> "150x150#",
+                    :large  => "350x350#" },
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :path => "/:style/:id/:filename" 
@@ -22,8 +28,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :mode
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
-                  :address, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership,
-                  :contractor_type
+                  :address, :city, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership,
+                  :contractor_type, :verified, :about_title, :about_content, :credentials, :website, :facebook, :twitter,
+                  :instant_message
 
   before_save :prepare_password
 

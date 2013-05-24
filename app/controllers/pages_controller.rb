@@ -21,6 +21,12 @@ before_filter :catch_users_missing_roles
     end
   end
 
+  def upgrade
+  end
+
+  def estimator
+  end
+
 	def contact
 		@message = Message.new
 		@page = Page.find_by_name('contact')

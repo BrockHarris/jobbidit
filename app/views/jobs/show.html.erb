@@ -1,45 +1,20 @@
-<h3>Viewing: <%= @job.title %></h3><p/>
+
 
 <% if @job.user = current_user %>
 	<%= link_to "[Edit]", edit_job_path(@job) %> - <%= link_to "[Delete]", @job, :method => :delete, :class=> :destroy %><p/>
 <% end %>
 
-<strong>Category:</strong> <br/>
-<%= @job.category %>
-<p/>
-
-<strong>Description:</strong><br/>
-<%= @job.description %>
-<p/>
 
 <p>
-<% unless @jobphotos.empty? %>
-	<% @jobphotos.each do |jobphoto| %>
-		<% if jobphoto.photo.exists? %>
-			<%= image_tag jobphoto.photo.url(:small) %>
-		<% end %>
-  	<%= jobphoto.caption %>
-	<% end %>
-<% else %>
-No photos posted for this job.
-<% end %>
+
 </p>
 
 <strong>Posted by:</strong><br/>
 <%= link_to @job.user.username, @job.user %>
 <p/>
 
-<strong>Duration:</strong><br/>
-<%= @job.duration %> Days
-<p/>
 
-<strong>Posted on:</strong><br/>
-<%= @job.created_at %> 
-<p/>
 
-<strong>Expires on:</strong><br/>
-<%= (@job.created_at + @job.duration.days) %>
-<p/>
 
 <h4>-Comment on Job-</h4>
 <%= render 'comments/comment_form' %>
@@ -49,12 +24,63 @@ No photos posted for this job.
 <%= render 'comments/job_comments' %><p/>
 
 <% if current_user.role == 'provider' && @job.open == true %>
-	<h4>-Bid on Job-</h4>
-	<%= render 'bids/bid_form' %><p/>
+	<% unless current_user == @job.user %>
+		<h4>-Bid on Job:</h4>
+		<%= render 'bids/bid_form' %><p/>
+	<% end %>
 <% end %>
 
-<h4>Current Bid: $<%= @job.current_bid %></h4>
+
 
 <h4>Bid History:</h4>
 <strong>Bid count:</strong> <%= @job.bid_count %> Bids
-<%= render 'bids/bids_on_job' %>
+
+
+<section class="row">
+		<article class="span12">
+			<div class="active-bidding-header">		
+				<% if @job.open == true %>        
+					<h1>Bidding Active</h1>
+					<span class="date">Expires on: <%= time_tag (@job.created_at + @job.duration.days) %></span>
+				<% else %>
+					<h1>Bidding Closed</h1>
+					<span class="date">Expired on: <%= time_tag (@job.created_at + @job.duration.days) %></span>
+				<% end %>
+				<article class="row-fluid">
+					<article class="span3">
+						<h4><%= @job.title %></h4>
+						<span class="date"><%= time_tag @job.created_at %></span>
+					</article>
+					
+					<article class="span9">
+						<h5>Category: <%= @job.category %></h5>
+						<h4>Job Details</h4>
+		        <article class="row-fluid">
+						  <article class="span7">
+								<p><%= @job.description %></p>
+						  </article>
+						</article>
+					</article>
+				</article>
+				<% unless @jobphotos.empty? %>
+					<% @jobphotos.each do |jobphoto| %>
+						<% if jobphoto.photo.exists? %>
+							<%= image_tag jobphoto.photo.url(:small) %>
+							<%= jobphoto.caption %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		</article>
+	</section>
+	
+	<section class="row">
+		<article class="span12">
+		  <div class="dashboard-table active-bidding">
+				<table>
+					<caption>Bidding history:</caption>
+					<%= render @bids %>
+				</table>
+			</div>
+		</article>
+	</section>

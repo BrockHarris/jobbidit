@@ -2,8 +2,6 @@
   <nav class="round">
     <div class="footer_bg">
 			<%= link_to "JobBidit © 2012", root_path, :class => "footer_links"  %> ·
-			<%= link_to "FAQ", faq_path, :class => "footer_links"  %> ·
-      <%= link_to "About", about_path, :class => "footer_links"  %> ·
 			<%= link_to "Contact", contact_path, :class => "footer_links" %> ·
 			<%= link_to "Privacy Policy", privacypolicy_path, :class => "footer_links" %> · 
 			<%= link_to "Admin", admin_path, :class => "footer_links" %>
@@ -21,6 +19,5 @@
           <li><%= link_to "Admin Logout", adminsignout_path, :method => :delete %></li>
         <% end %>
       </ul>
-
 </footer>
 <%# debug session if Rails.env=="development" %>

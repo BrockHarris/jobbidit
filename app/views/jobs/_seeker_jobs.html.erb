@@ -1,0 +1,24 @@
+<section class="dashboard-view">
+	<section class="job-posts">
+		<section class="row">
+			<article class="span12">
+		    <article class="dash-header">
+				  <h1>Hello <%= current_user.firstname %></h1>
+				  <a class="add-info" href="#"><span class="yellow">+</span> Add a new job</a>
+				  <%= render 'jobs/job_form' %> 
+		    </article>
+		  </article>
+		</section>	        
+		
+		<section class="row">
+			<article class="span12">
+		    <div class="dashboard-table">
+					<table class="">
+						<caption>Your recent job posts</caption>
+						<%= render @posted_jobs  %>
+					</table>
+		    </div>
+		  </article>
+		</section>
+	</section>
+</section>		 		

@@ -1,0 +1,10 @@
+<h3>Add work history</h3>
+
+<%= form_for @pastwork, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.text_field :title, :placeholder => "Title" %><br/>
+  <%= f.text_field :content, :placeholder => "Description" %> <br/>
+  <%= f.file_field :photo %>
+  <%= f.submit 'Post' %>
+<% end %>

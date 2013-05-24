@@ -1,12 +1,5 @@
-<h3>Profile Page</h3>
-<p/>
-<%= render_profile_pic(current_user, :medium) %><br/>
-
-Profile for: <%= current_user.username %>
-<p/>
-Account Type: <%= current_user.role %>
-<p/>
-
 <% unless current_user == @profile_user %>
-	<%= render "pmessages/form" %>
+	<%= render "users/public_profile" %>
+<% else %>
+	<%= render "users/self_profile" %>
 <% end %>

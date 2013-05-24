@@ -42,6 +42,15 @@
 
         <section class="row-fluid">
           <article class="span3">
+            <label for="email">Contractor Type</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :contractor_type, :placeholder => "Profession" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
             <label for="password">New Password</label>
           </article>
           <article class="span9">
@@ -78,6 +87,15 @@
 
         <section class="row-fluid">
           <article class="span3">
+            <label for="address">City</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :city, :placeholder => "City" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
             <label for="address">Street Address</label>
           </article>
           <article class="span9">
@@ -100,6 +118,51 @@
           </article>
           <article class="span9">
             <%= f.text_field :zip, :placeholder => "Zip Code" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="phone">Credentials</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :credentials, :placeholder => "Credentials" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="phone">Website</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :website, :placeholder => "Website" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="phone">Facebook</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :facebook, :placeholder => "Facebook" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="phone">Twitter</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :twitter, :placeholder => "Twitter" %>
+          </article>
+        </section>
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="phone">Instant Message</label>
+          </article>
+          <article class="span9">
+            <%= f.text_field :instant_message, :placeholder => "Instant Message" %>
           </article>
         </section>
 

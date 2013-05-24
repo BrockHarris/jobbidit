@@ -8,6 +8,13 @@ module ApplicationHelper
     end
   end
 
+  def user_messages(current_user)
+    if current_user
+      @messages = Pmessage.order.find_all_by_receiver_id(current_user.id)
+      return @messages
+    end
+  end
+
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end

@@ -1,0 +1,85 @@
+<section class="profile-view">
+	
+	<% if current_user.city.empty? || current_user.state.empty? %>
+		<section class="improve-profile">
+			<h3>Welcome, <%= current_user.firstname %>. Let's improve your profile</h3>
+			<h1>Where are you located?</h1>
+
+			<%= form_for @user, :html=> { :multipart => true} do |f| %>
+      	<%= render 'shared/error_messages', :object => f.object %>
+      	<%= f.text_field :city, :placeholder => "Add City", :id => "postal-code" %>
+      	<%= f.select :state, us_states, :id => "city" %>
+				<div class='clearfix'></div>					
+				<%= f.submit 'Save' %>
+			<% end %>
+		</section>
+	<% end %>
+	     
+	<section class="profile-header">
+		<section class="row">
+			<article class="span4">
+			  <div class="profile-pic">
+				  <a href="#"><%= image_tag "camera-icon.png", :size=>"57x37" %></a>
+					<%= render_profile_pic(current_user, :large) %>       	
+				</div>
+			</article>
+			
+			<article class="span8">
+				<h1><a href="/settings"><span class="pen"></span></a><%= current_user.firstname %> <%= current_user.lastname %></h1>
+				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.contractor_type %></h3>
+				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.city %>, <%= current_user.state %></h3>
+				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.credentials %></h3>
+				
+				<div class="credential-stamp"><%= image_tag "v-stamp.png" %></div>				     		
+				<a class="edit" href="/settings">Edit<span class="menu-arrow"></span></a>
+			</article>
+	  </section>
+	</section>
+	
+	<section class="profile-contact">
+		<section class="row">
+			<article class="span4">
+				<ul>
+					<li><a href="/settings"><span class="pen"></span></a>Email: <%= current_user.email %></li>
+					<li><a href="/settings"><span class="pen"></span></a>Web Address: <%= current_user.website %></li>
+					<li><a href="/settings"><span class="pen"></span></a>Phone: <%= current_user.phone %></li>
+				</ul>
+			</article>
+			
+			<article class="span4">
+				<ul>
+				  <li><a href="#"><span class="pen"></span></a>Facebook: <%= current_user.facebook %></li>
+					<li><a href="#"><span class="pen"></span></a>Twitter: <%= current_user.twitter %></li>
+					<li><a href="#"><span class="pen"></span></a>Instant Message: <%= current_user.instant_message %></li>
+				</ul>
+			</article>
+		</section>
+	</section>
+
+	<section class="profile-about">
+	  <section class="row">
+			<article class="span12">
+		 		<h1>Background</h1>
+				<%= form_for @user, :html=> { :multipart => true} do |f| %>
+      		<%= render 'shared/error_messages', :object => f.object %>
+      		<span class="yellow">+</span>
+      		<%= f.text_field :about_title, :placeholder => "Add a Summary" %><br/>
+      		<%= f.text_field :about_content, :placeholder => "Add a Bio" %>
+					<div class='clearfix'></div>					
+					<%= f.submit 'Save' %>
+					<% end %>
+				</article>
+	    </section>
+		</section>	 
+
+	  <section class="profile-past-work">		     	
+	    <section class="row">
+			  <article class="span12">
+					<h1>Past Work</h1>
+					<%= render @pastworks %>
+					<%= render "pastworks/form" %>
+				</article>
+	    </section>
+    </section>
+  </section>
+</section>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504214302) do
+ActiveRecord::Schema.define(:version => 20130524022013) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -107,6 +107,19 @@ ActiveRecord::Schema.define(:version => 20130504214302) do
 
   add_index "pages", ["name"], :name => "index_pages_on_name"
 
+  create_table "pastworks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "content"
+    t.string   "photo_file_name"
+    t.string   "photo_file_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "pastworks", ["user_id"], :name => "index_pastworks_on_user_id"
+
   create_table "pmessages", :force => true do |t|
     t.integer  "user_id"
     t.integer  "receiver_id"
@@ -151,6 +164,13 @@ ActiveRecord::Schema.define(:version => 20130504214302) do
     t.datetime "deleted_at"
     t.string   "membership"
     t.string   "contractor_type"
+    t.string   "about_title"
+    t.string   "about_content"
+    t.string   "credentials"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instant_message"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

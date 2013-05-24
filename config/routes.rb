@@ -12,6 +12,8 @@ Jobbidit::Application.routes.draw do
   match '/adminsignout', :to => 'adminsessions#destroy'
   match '/usertype', :to => 'users#usertype'
   match '/assist', :to => 'users#assist'
+  match '/upgrade', :to => 'pages#upgrade'
+  match '/estimator', :to => 'pages#estimator'
   match '/settings', :to => 'users#settings'
   match '/fbform', :to => 'users#fbform'
   match '/inbox', :to => 'pmessages#index'
@@ -33,6 +35,7 @@ Jobbidit::Application.routes.draw do
   resources :sessions,   :only => [:new, :create, :destroy]
   resources :adminsessions,   :only => [:new, :create, :destroy]
   resources :bids
+  resources :pastworks
   resources :jobtypes
   resources :comments
 

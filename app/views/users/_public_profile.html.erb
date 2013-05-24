@@ -1,0 +1,58 @@
+<%= render "pmessages/form" %>
+
+<section class="profile-view">
+	<section class="profile-header">
+		<section class="row">
+			<article class="span4">
+				<div class="profile-pic"><%= render_profile_pic(@user, :large) %></div>
+			</article>
+			
+			<article class="span8">
+				<h1><%= @user.firstname %> <%= @user.lastname %></h1>
+				<h3><%= @user.contractor_type %></h3>
+				<h3><%= @user.city %>, <%= @user.state %></h3>
+				<% if @user.verified? %>
+					<%= image_tag "v-stamp.png" %>
+				<% end %>
+			</article>
+		</section>
+	</section>
+	
+	<section class="profile-contact">
+		<section class="row">
+			<article class="span4">
+				<ul>
+					<li>Email: <%= @user.email %></li>
+					<li>Web Address: <%= @user.website %></li>
+					<li>Phone Number: <%= @user.phone %></li>
+				</ul>
+			</article>
+			
+			<article class="span4">
+				<ul>
+					<li>Facebook: <%= @user.facebook %></li>
+					<li>Twitter: <%= @user.twitter %></li>
+					<li>Instant Message: <%= @user.instant_message %></li>
+				</ul>
+			</article>
+		</section>
+	</section>
+	
+	<section class="profile-about">
+		<section class="row">
+			<article class="span12">
+				<h3><%= @user.about_title %></h3>
+				<p><%= @user.about_content %></p>
+			</article>
+		</section>
+	</section>	     	
+	
+	<section class="profile-past-work">		     	
+		<section class="row">
+			<article class="span12">
+				<h3>Past Work</h3>
+				<%= render @pastworks  %>
+			</article>
+		</section>
+	</section>
+</section>

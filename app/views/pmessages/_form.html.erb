@@ -1,8 +1,8 @@
-<h4>Send <%= @profile_user.username %> a message:</h4>
+<h4>Send <%= @user.username %> a message:</h4>
 <%= form_for @pmessage, :html=> { :multipart => true} do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :receiver_id, :value => @profile_user.id %>
+  <%= f.hidden_field :receiver_id, :value => @user.id %>
   <%= f.text_field :title, :placeholder => "Subject" %><br/>
   <%= f.text_field :body, :placeholder => "Body" %> <br/>
   <%= f.submit 'Send' %>

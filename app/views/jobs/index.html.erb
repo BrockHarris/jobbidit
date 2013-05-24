@@ -1,15 +1,5 @@
-Main jobs page:
-
 <% if current_user.role == 'placer' %>
-
-	<%= render 'jobs/job_history' %> <p/>
-	
-	I'm a <strong>homeowner</strong> (switch to contractor to view all jobs)
-
-	<%= render 'jobs/job_form' %> <p/>
-	
+	<%= render 'jobs/seeker_jobs' %>
 <% else %>
-	<strong>I'm a contractor</strong> (switch to homeowner to post a job)
-	<%= render 'jobs/view_jobs' %> 
+	<%= render 'jobs/provider_jobs' %> 
 <% end %>
-

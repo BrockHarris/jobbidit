@@ -3,7 +3,7 @@
     <section class="row">
       <section class="span4">
         <section class="brand">
-          <h1>Wrenchmark</h1>
+          <h1>ScoutJack</h1>
           <h5>tagline here</h5>
         </section>
       </section>
@@ -97,7 +97,6 @@
       <section class="row">
         <section class="span12">
           <form class="pull-right">
-            <input type="search" name="googlesearch" placeholder="Search...">
             <p>
               <span class="logged-in-prompt">
                 <a href="/signin">Sign in</a> &bull;
@@ -112,29 +111,35 @@
 
       <section class="row">
         <section class="span12">
-          <form class="pull-right">
-            <input class="pull-right" type="search" name="googlesearch" placeholder="Search...">
-            <p>
-              <span class="logged-in-prompt">
-                <a href="/settings">Account Type: <%= current_user.role %></a> &bull;
-                <a href="/settings">Upgrade</a>
-              </span>
-            </p>
-          </form>
+          <% if current_user.role == 'provider' %>
+
+            <%= form_tag jobs_path, :class => "pull-right", :method => :get do %>
+              <%= text_field_tag :search, params[:search], :class => "pull-right", :placeholder => "Search" %>
+              <p>
+                <span class="logged-in-prompt">
+                  <%= link_to "Account Type: #{current_user.role}", settings_path %> &bull;
+                  <%= link_to "Upgrade", upgrade_path %>
+                </span>
+              </p>
+            <% end %>
+
+          <% else %>
+            
+            <%= form_tag users_path, :class => "pull-right", :method => :get do %>
+              <%= text_field_tag :search, params[:search], :class => "pull-right", :placeholder => "Search" %>        
+            <% end %>
+
+          <% end %>
         </section>
       </section>
 
       <section class="row">
         <% if current_user.role == 'provider' %>              
-      
           <section class="span12 tab-handler">
             <ul class="tabs">
-              <li class='active'>
-                <%= link_to "Profile", current_user %>
-              </li>
-              <li>
-                <%= link_to "Job Board", jobs_path %>
-              </li>
+              <!-- TODO: setup active link switches (<li class='active'>) -->
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Job Board", jobs_path %></li> 
             </ul> 
           </section>
           
@@ -142,23 +147,19 @@
 
           <section class="span12 tab-handler">
             <ul class="tabs">
-              <li>
-                <a href="#">Estimator</a>
-              </li>
-              <li class="">
-                <a href="#">Provider List</a>
-              </li>
-              <li>
-                <a href="#">Dashboard</a>
-              </li>
+              <li><%= link_to "Estimator", estimator_path %></li> 
+              <li><%= link_to "Provider List", users_path %></li>
+              <li><%= link_to "Dashboard", jobs_path %></li>
             </ul> 
           </section>
         <% end %>
-      <% end %>
-    </section>
+      </section>
+    <% end %>
   </section>
 </header>
 
 <% flash.each do |key, value| %>
   <div id="flash" class="alert alert-info msg_format"><%= value %></div>
 <% end %>
+
+<%= render 'pages/dashboard' if current_user %>

@@ -1,0 +1,28 @@
+<section class="row">
+	<article class="span3">
+		<div class="profile-pic">
+			<%= render_profile_pic(user, :medium) %>      	
+		</div>
+	</article>	
+	        
+	<article class="span3">
+		<h3><%= user.firstname %> <%= user.lastname %></h3>
+		<% if user.verified? %>
+			<%= image_tag "v-stamp.png", :size => "63x62" %>
+		<% end %>
+	</article>	        
+	
+	<article class="span4">
+		<h3><%= user.about_title %></h3>	        	
+	</article>	        
+		        
+	<article class="span2">
+		<h3><%= link_to "View Profile", user %></h3>		        	
+	</article>	      
+</section>	
+	    
+<section class="row">
+	<article class="span12">
+		<hr />
+	</article>
+</section>

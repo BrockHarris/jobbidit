@@ -3,8 +3,21 @@ class UsersController < ApplicationController
   before_filter :catch_users_missing_roles, :only => :show
 
   def show
-    @profile_user = User.find(params[:id])
     @pmessage = Pmessage.new
+    @user = User.find(params[:id])
+    @pastwork = Pastwork.new
+    @pastworks = @user.pastworks
+  end
+
+  def index
+    @search = User.search do
+      fulltext params[:search]
+    end
+    @users = @search.results
+  end 
+
+  def settings
+    @user = current_user
   end
 
   def profile
@@ -38,10 +51,6 @@ class UsersController < ApplicationController
         render 'pages/contractors'
       end
     end
-  end
-  
-  def settings
-    @user = current_user
   end
 
   def welcome

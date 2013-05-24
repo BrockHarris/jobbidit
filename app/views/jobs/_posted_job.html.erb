@@ -1,9 +1,5 @@
 <tr>
-  <td><%= job.category %></td>
-  <td><%= link_to job.title, job %></td> 
-  <td>
-  	<% if @job.user = current_user %>
-			<%= link_to "Edit job", edit_job_path(@job) %> - <%= link_to "Delete", @job, :method => :delete, :class=> :destroy %>
-		<% end %>
-	</td>
-<tr>
+	<th><%= link_to job.title, job %></th>
+	<td><%= link_to job.bid_count, job %> Bids</td>
+	<td><%= link_to "Delete", job_path(job), :method=>:delete  %></td>
+</tr>
