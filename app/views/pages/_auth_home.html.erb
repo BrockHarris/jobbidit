@@ -1,1 +1,5 @@
-<h3>No view or action specified for active session root path.</h3>
+<% if current_user.role == 'provider' %>
+	<h3>No view or action specified for provider root path.</h3>
+<% else %>
+	<%= render 'seeker_jobs' %>
+<% end %>

@@ -34,6 +34,12 @@ before_filter :catch_users_missing_roles
 
 	def home
 		@user = User.new
+		if current_user
+			@job = Job.new
+			@jobtypes = Jobtype.all
+			1.times { @job.jobphotos.build }
+			@posted_jobs = current_user.jobs
+		end
 	end
 
 	def homeowners

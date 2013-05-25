@@ -4,6 +4,7 @@
 		  <article class="span8">
 		  	<%= form_for @user, :class=>"main-prompt", :id=>"sign-up" do |f| %>
 		  		<%= render 'shared/error_messages', :object => f.object %>
+		  		<%= f.hidden_field :role, :value=> "placer" %>
 					<h5>Basic Info</h5>
 					<%= label_tag :firstname, 'First Name' %>	        		
 					<%= f.text_field :firstname, :id=>"sign-up-first-name" %>
@@ -13,6 +14,9 @@
 		
 					<%= label_tag :email, 'Email' %>	        		
 					<%= f.text_field :email, :id=>"sign-up-email" %>
+
+					<%= label_tag :username, 'Username' %>	        		
+					<%= f.text_field :username, :id=>"sign-up-username" %>
 		
 					<%= label_tag :password, 'Password' %>			        		
 				  <%= f.password_field :password, :id=>"sign-up-password" %>

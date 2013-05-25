@@ -2,10 +2,10 @@
 	<th><%= link_to job.title, job %></td> 
   <td><%= job.category %></td>
   <td>Location, Area</td>
-  <td>$150-$170</td> 
+  <td>$150-$180</td> 
   <td>
   	<% if job.user = current_user %>
-			<%= link_to "Edit job", edit_job_path(job) %> - <%= link_to "Delete", job, :method => :delete, :class=> :destroy %>
+			<%= link_to "Edit", edit_job_path(job) %> - <%= link_to "Delete", job, :method => :delete, :class=> :destroy %>
 		<% end %>
 	</td>
 <tr>
