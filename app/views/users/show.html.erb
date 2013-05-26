@@ -1,4 +1,4 @@
-<% unless current_user == @profile_user %>
+<% unless current_user == @user %>
 	<%= render "users/public_profile" %>
 <% else %>
 	<%= render "users/self_profile" %>

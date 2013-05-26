@@ -29,7 +29,6 @@ Jobbidit::Application.routes.draw do
   resources :messages
   resources :pmessages
   resources :admins
-  resources :users
   resources :pages
   resources :authentications
   resources :sessions,   :only => [:new, :create, :destroy]
@@ -38,14 +37,14 @@ Jobbidit::Application.routes.draw do
   resources :pastworks
   resources :jobtypes
   resources :comments
+  resources :jobphotos
+  resources :users 
 
   resources :jobs do
-      member do
-        post :request
-      end
+    member do
+      post :request
+    end
   end
-  resources :jobphotos
 
   root :to => 'pages#home'
-
 end

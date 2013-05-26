@@ -1,20 +1,20 @@
-					<tr>
-							<th><%= link_to bid.user.username, bid.user %></th>
-							<td class="hidden-phone">
-								<a class="message-job" href="#"><span class="message-count">1</span><%= image_tag "yellow-mail.gif" %></a>
-							</td>
-							<% if bid.user.verified? %>
-								<td class="hidden-phone"><a class="stamp" href="#"><%= image_tag "v-stamp.png" %></a></td>
-							<% end %>
-							<td class="hidden-phone"><%= link_to "$#{bid.amount}", bid.user %></td>
-							<td class="hidden-phone">
-								<% if @job.user == current_user && @job.open == true %>
-									<%= form_for @job, :id => "accept", :html=> { :multipart => true} do |f| %>
- 										<%= f.hidden_field :open, :value => false %>
- 										<%= f.hidden_field :current_bid, :value => bid.amount %>
-  									<%= link_to 'Accept', "#", :onclick => "$('#accept').submit()" %>
-									<% end %>
-								<% end %>
-							</td>
-							<td class="hidden-phone"><%= link_to "Contact Provider", bid.user %></td>
-						</tr>
+<tr>
+	<th><%= link_to bid.user.username, bid.user %></th>
+	<td class="hidden-phone">
+		<a class="message-job" href="#"><span class="message-count">1</span><%= image_tag "yellow-mail.gif" %></a>
+	</td>
+	<% if bid.user.verified? %>
+		<td class="hidden-phone"><a class="stamp" href="#"><%= image_tag "v-stamp.png" %></a></td>
+	<% end %>
+	<td class="hidden-phone"><%= link_to "$#{bid.amount}", bid.user %></td>
+	<td class="hidden-phone">
+		<% if @job.user == current_user && @job.open == true %>
+			<%= form_for @job, :html=> { :multipart => true} do |f| %>
+ 				<%= f.hidden_field :open, :value => false %>
+ 				<%= f.hidden_field :current_bid, :value => bid.amount %>
+				<%= f.submit "Accept" %>
+  		<% end %>
+		<% end %>
+	</td>
+	<td class="hidden-phone"><%= link_to "Contact Provider", bid.user %></td>
+</tr>

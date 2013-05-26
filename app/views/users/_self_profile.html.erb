@@ -19,13 +19,13 @@
 		<section class="row">
 			<article class="span4">
 			  <div class="profile-pic">
-				  <a href="#"><%= image_tag "camera-icon.png", :size=>"57x37" %></a>
+				  <a href="#"><%= image_tag "camera-icon.png", :size=>"57x37", :class => "camera" %></a>
 					<%= render_profile_pic(current_user, :large) %>       	
 				</div>
 			</article>
 			
 			<article class="span8">
-				<h1><a href="/settings"><span class="pen"></span></a><%= current_user.firstname %> <%= current_user.lastname %></h1>
+				<h1><span class="pen"></span><%=  @user.firstname %> <%= @user.lastname %></h1>
 				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.contractor_type %></h3>
 				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.city %>, <%= current_user.state %></h3>
 				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.credentials %></h3>

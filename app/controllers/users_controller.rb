@@ -2,13 +2,6 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:update, :destroy]
   before_filter :catch_users_missing_roles, :only => :show
 
-  def show
-    @pmessage = Pmessage.new
-    @user = User.find(params[:id])
-    @pastwork = Pastwork.new
-    @pastworks = @user.pastworks
-  end
-
   def index
     @search = User.search do
       fulltext params[:search]
@@ -16,25 +9,15 @@ class UsersController < ApplicationController
     @users = @search.results
   end 
 
-  def settings
-    @user = current_user
-  end
-
-  def profile
-  end 
-
-  def usertype
-    @user = current_user
-    @go_to_root = true
+  def show
+    @user = User.find(params[:id])
+    @pmessage = Pmessage.new
+    @pastwork = Pastwork.new
+    @pastworks = @user.pastworks
   end
 
   def new
     @user = User.new
-  end
-
-  def fbform
-    @user = User.find_by_id(session[:temp_id])
-    session[:user_id] = @user.id
   end
 
   def create
@@ -53,6 +36,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+  end 
+
+  def usertype
+    @user = current_user
+    @go_to_root = true
+  end
+
+  def fbform
+    @user = User.find_by_id(session[:temp_id])
+    session[:user_id] = @user.id
+  end
+  
   def welcome
     if @user.nil? || (!@user.active? && !@user.pending?)
       flash.now[:error] = "This user is no longer available for this operation."
@@ -138,6 +134,10 @@ class UsersController < ApplicationController
   def activate
     @user.activate! if @user.pending?
     redirect_to root_url
+  end
+
+  def settings
+    @user = current_user
   end
 
   def update
