@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :correct_user, :only => [:update, :destroy]
   before_filter :catch_users_missing_roles, :only => :show
+  respond_to :html, :json
 
   def index
     @search = User.search do
@@ -141,17 +142,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
-      if @user.pending?
-        flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
-        session[:user_id] = nil
-        redirect_to root_url
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        if @user.pending?
+          flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
+          session[:user_id] = nil
+          redirect_to root_url
+        else
+          format.html { redirect_to((:back), :notice => 'Your account has been updated!') }
+          format.json { respond_with_bip(@user) }
+        end
       else
-        flash[:notice] = "Your account has been updated!"
-        redirect_to (:back)
+    	  flash[:error] = "There was a problem with your info, please try again."
+        unless @user.pending?
+          format.json { respond_with_bip(@user) }
+        end
       end
-    else
-    	flash[:error] = "There was a problem with your info, please try again."
     end
   end
   

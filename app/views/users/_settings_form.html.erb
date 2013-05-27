@@ -1,71 +1,19 @@
 <section class="general-account">
   <section class="row">
     <article class="span12">
-      <h3>General Account Settings</h3>
+      <h3>Account Settings</h3>
     </article>
   </section>
   
   <section class="row">
-    <article class="span5"></article>
+    <article class="span5">
+      <h4>General</h4>
+    </article>
     <article class="span7">
-
       <%= form_for @user, :html=> { :multipart => true} do |f| %>
         <%= render 'shared/error_messages', :object => f.object %>
         Profile picture: <%= f.file_field :photo %><br/>
         <%= render_profile_pic(current_user, :medium) %><br/><p/>
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="username">Username</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :username, :placeholder => "Username" %>
-          </article>
-        </section> 
-         
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="email">Email</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :email, :placeholder => "Email" %>
-          </article>
-        </section> 
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="role">Role</label>
-          </article>
-          <article class="span9">
-            <%= f.select :role, [['Homeowner','placer'],['Contractor','provider']] %>
-          </article>
-        </section> 
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="email">Contractor Type</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :contractor_type, :placeholder => "Profession" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="password">New Password</label>
-          </article>
-          <article class="span9">
-            <%= f.password_field :password, :placeholder => "New Password" %>
-          </article>
-        </section> 
-        
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="password_confirmation">Confirm New Password</label>
-          </article>
-          <article class="span9">
-            <%= f.password_field :password_confirmation, :placeholder => "Confirm New Password" %>
-          </article>
-        </section> 
 
         <section class="row-fluid">
           <article class="span3">
@@ -83,104 +31,86 @@
           <article class="span9">
             <%= f.text_field :lastname, :placeholder => "Last Name" %>
           </article>
+        </section>   
+
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="password">New Password</label>
+          </article>
+          <article class="span9">
+            <%= f.password_field :password, :placeholder => "New Password" %>
+          </article>
+        </section> 
+        
+        <section class="row-fluid">
+          <article class="span3">
+            <label for="password_confirmation">Confirm Password</label>
+          </article>
+          <article class="span9">
+            <%= f.password_field :password_confirmation, :placeholder => "Confirm New Password" %>
+          </article>
         </section> 
 
         <section class="row-fluid">
           <article class="span3">
-            <label for="address">City</label>
+            <label for="role">Role (Temporary)</label>
           </article>
           <article class="span9">
-            <%= f.text_field :city, :placeholder => "City" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="address">Street Address</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :address, :placeholder => "Street Address" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="state">State</label>
-          </article>
-          <article class="span9">
-            <%= f.select :state, us_states %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="zip">Zip Code</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :zip, :placeholder => "Zip Code" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Credentials</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :credentials, :placeholder => "Credentials" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Website</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :website, :placeholder => "Website" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Facebook</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :facebook, :placeholder => "Facebook" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Twitter</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :twitter, :placeholder => "Twitter" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Instant Message</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :instant_message, :placeholder => "Instant Message" %>
-          </article>
-        </section>
-
-        <section class="row-fluid">
-          <article class="span3">
-            <label for="phone">Phone Number</label>
-          </article>
-          <article class="span9">
-            <%= f.text_field :phone, :placeholder => "Phone Number" %>
+            <%= f.select :role, [['Homeowner','placer'],['Contractor','provider']] %>
           </article>
         </section>
 
         <section class="row-fluid">
           <article class="offset3 span9">
             <%= f.submit 'Save' %>
+            <%= link_to "Cancel", current_user %>
           </article>
         </section>
       <% end %>
     </article>                    
+  </section>
+
+  <section class="row">
+    <article class="span12">
+      <div class="account-settings">
+        <table>
+          <tr>
+            <th>Username</th>
+            <td><%= best_in_place @user, :username %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+
+          <tr>
+            <th>Email</th>
+            <td><%= best_in_place @user, :email %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+
+          <tr>
+            <th>Street</th>
+            <td><%= best_in_place @user, :address, :nil=>"* click to add *" %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+
+          <tr>
+            <th>City</th>
+            <td><%= best_in_place @user, :city, :nil=>"* click to add *" %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+            
+          <tr>
+            <th>State</th>
+            <td><%= best_in_place @user, :state, :type => :select, :collection => us_states, :nil=>"* click to add *" %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+
+          <tr>
+            <th>Postal Code</th>
+            <td><%= best_in_place @user, :zip, :nil=>"* click to add *" %></td>
+            <td><a href="#">Edit</a></td>
+          </tr>
+        </table>
+      </div>    
+    </article>
   </section>
 </section>

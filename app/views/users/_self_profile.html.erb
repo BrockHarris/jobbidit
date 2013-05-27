@@ -25,12 +25,23 @@
 			</article>
 			
 			<article class="span8">
-				<h1><span class="pen"></span><%=  @user.firstname %> <%= @user.lastname %></h1>
-				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.contractor_type %></h3>
-				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.city %>, <%= current_user.state %></h3>
-				<h3><a href="/settings"><span class="pen"></span></a><%= current_user.credentials %></h3>
-				
-				<div class="credential-stamp"><%= image_tag "v-stamp.png" %></div>				     		
+				<h1>
+					<span class="pen"></span>
+					<%= best_in_place @user, :firstname, :nil=>"First name," %> <%= best_in_place @user, :lastname, :nil=>"Last name" %>
+				</h1>
+				<h3>
+					<span class="pen"></span>
+					<%= best_in_place @user, :contractor_type, :nil=>"Profession" %>
+				</h3>
+				<h3>
+					<span class="pen"></span>
+					<%= best_in_place @user, :city, :nil=>"Your city" %>, <%= best_in_place @user, :state, :nil=>"State" %>
+				</h3>
+				<h3>
+					<span class="pen"></span>
+					<%= best_in_place @user, :credentials, :nil => "Your credentials" %>
+				</h3>
+				<% if current_user.verified? %><div class="credential-stamp"><%= image_tag "v-stamp.png" %></div><% end %>				     		
 				<a class="edit" href="/settings">Edit<span class="menu-arrow"></span></a>
 			</article>
 	  </section>
@@ -38,19 +49,19 @@
 	
 	<section class="profile-contact">
 		<section class="row">
-			<article class="span4">
+			<article class="span5">
 				<ul>
-					<li><a href="/settings"><span class="pen"></span></a>Email: <%= current_user.email %></li>
-					<li><a href="/settings"><span class="pen"></span></a>Web Address: <%= current_user.website %></li>
-					<li><a href="/settings"><span class="pen"></span></a>Phone: <%= current_user.phone %></li>
+					<li><span class="pen"></span><%= best_in_place @user, :email, :nil=>"Email Address" %></li>
+					<li><span class="pen"></span><%= best_in_place @user, :website, :nil=>"Web Address" %></li>
+					<li><span class="pen"></span><%= best_in_place @user, :phone, :nil=>"Phone" %></li>
 				</ul>
 			</article>
 			
-			<article class="span4">
+			<article class="span5">
 				<ul>
-				  <li><a href="#"><span class="pen"></span></a>Facebook: <%= current_user.facebook %></li>
-					<li><a href="#"><span class="pen"></span></a>Twitter: <%= current_user.twitter %></li>
-					<li><a href="#"><span class="pen"></span></a>Instant Message: <%= current_user.instant_message %></li>
+				  <li><span class="pen"></span><%= best_in_place @user, :facebook, :nil=>"Facebook" %></li>
+					<li><span class="pen"></span><%= best_in_place @user, :twitter, :nil=>"Twitter" %></li>
+					<li><span class="pen"></span><%= best_in_place @user, :instant_message, :nil=>"IM" %></li>
 				</ul>
 			</article>
 		</section>
@@ -60,14 +71,12 @@
 	  <section class="row">
 			<article class="span12">
 		 		<h1>Background</h1>
-				<%= form_for @user, :html=> { :multipart => true} do |f| %>
-      		<%= render 'shared/error_messages', :object => f.object %>
-      		<span class="yellow">+</span>
-      		<%= f.text_field :about_title, :placeholder => "Add a Summary" %><br/>
-      		<%= f.text_field :about_content, :placeholder => "Add a Bio" %>
-					<div class='clearfix'></div>					
-					<%= f.submit 'Save' %>
-					<% end %>
+		 		<div class="add-info">
+      		<span class="yellow">+</span> <%= best_in_place @user, :about_title, :nil=>"Click to add summary" %>
+      	</div>
+      	<div class="add-info">
+			  	<span class="yellow">+</span> <%= best_in_place @user, :about_content, :nil=>"Click to add bio" %>			
+			  </div>					
 				</article>
 	    </section>
 		</section>	 

@@ -8,10 +8,10 @@
   <%= f.select :duration, [['12 Hours','12'],['1 Day','24'],['2 Days','48']] %><br/>
 
   <strong>Job start time:</strong><br/>
-  <%= f.datepicker "start_date" %><br/>
+  <%# f.datepicker "start_date" %><br/>
 
   <strong>Job end time:</strong><br/>
-  <%= f.datepicker "expire_date" %><br/>
+  <%# f.datepicker "expire_date" %><br/>
 
   <strong>Job category:</strong><br/>
   <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
