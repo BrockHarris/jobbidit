@@ -25,6 +25,7 @@ before_filter :catch_users_missing_roles
   end
 
   def estimator
+  	@estimator_tab_active = true
   end
 
 	def contact
@@ -39,6 +40,7 @@ before_filter :catch_users_missing_roles
 			@jobtypes = Jobtype.all
 			1.times { @job.jobphotos.build }
 			@posted_jobs = current_user.jobs
+			@dashboard_tab_active = true
 		end
 	end
 

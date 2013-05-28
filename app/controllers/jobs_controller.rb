@@ -10,8 +10,8 @@ class JobsController < ApplicationController
     @user = current_user
 		@job = Job.new
 		1.times { @job.jobphotos.build }
-		
 		@posted_jobs = @user.jobs
+		@jobs_tab_active = true
 	end
 
   def create

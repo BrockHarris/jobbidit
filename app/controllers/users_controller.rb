@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       fulltext params[:search]
     end
     @users = @search.results
+    @providers_tab_active = true
   end 
 
   def show
@@ -15,6 +16,9 @@ class UsersController < ApplicationController
     @pmessage = Pmessage.new
     @pastwork = Pastwork.new
     @pastworks = @user.pastworks
+    if @user == current_user
+      @profile_tab_active = true
+    end
   end
 
   def new
