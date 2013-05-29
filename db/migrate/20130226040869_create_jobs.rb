@@ -7,7 +7,11 @@ class CreateJobs < ActiveRecord::Migration
       t.string    :category
       t.integer   :current_bid
       t.integer   :duration
+      t.integer   :bid_count
+      t.integer   :budget_high
+      t.integer   :budget_low
       t.datetime  :expire_date
+      t.datetime  :start_date
       t.boolean   :open, :default=>true
       t.timestamps
     end

@@ -5,18 +5,29 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :username
       t.string    :firstname
       t.string    :lastname
+      t.string    :displayname
       t.string    :address
       t.string    :city
       t.string    :state
       t.string    :zip
-      t.string    :phone      
+      t.string    :phone
+      t.string    :timezone
+      t.string    :membership  
+      t.string    :contractor_type 
+      t.string    :about_title 
+      t.string    :about_content
+      t.string    :credentials
+      t.string    :website
+      t.string    :facebook
+      t.string    :twitter
+      t.string    :instant_message
       t.string    :password_hash
       t.string    :password_salt
       t.string    :reset_code, :limit=>50
       t.datetime  :reset_code_at
+      t.datetime  :deleted_at
       t.string    :facebook_id
       t.string    :token
-      t.string    :created_by 
       t.string    :state, :limit=>25
       t.string    :role, :limit=>25
       t.string    :activation_code, :limit=>100

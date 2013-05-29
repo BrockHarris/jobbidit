@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   searchable do
     text :email, :firstname, :lastname, :city, :state, :zip, :username
   end

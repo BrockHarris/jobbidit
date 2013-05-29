@@ -12,6 +12,8 @@ gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
+#gem "factory_girl_rails", "~> 4.0" #temp
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

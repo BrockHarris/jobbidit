@@ -70,12 +70,14 @@ ActiveRecord::Schema.define(:version => 20130524022013) do
     t.string   "category"
     t.integer  "current_bid"
     t.integer  "duration"
+    t.integer  "bid_count"
+    t.integer  "budget_high"
+    t.integer  "budget_low"
     t.datetime "expire_date"
+    t.datetime "start_date"
     t.boolean  "open",        :default => true
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.integer  "bid_count"
-    t.datetime "start_date"
   end
 
   add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
@@ -123,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130524022013) do
   create_table "pmessages", :force => true do |t|
     t.integer  "user_id"
     t.integer  "receiver_id"
+    t.integer  "job_id"
     t.string   "title"
     t.string   "body"
     t.datetime "deleted_at"
@@ -131,25 +134,36 @@ ActiveRecord::Schema.define(:version => 20130524022013) do
     t.datetime "updated_at",                     :null => false
   end
 
-  add_index "pmessages", ["user_id", "receiver_id"], :name => "index_pmessages_on_user_id_and_receiver_id"
+  add_index "pmessages", ["user_id", "receiver_id", "job_id"], :name => "index_pmessages_on_user_id_and_receiver_id_and_job_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "username"
     t.string   "firstname"
     t.string   "lastname"
+    t.string   "displayname"
     t.string   "address"
     t.string   "city"
     t.string   "state",                    :limit => 25
     t.string   "zip"
     t.string   "phone"
+    t.string   "timezone"
+    t.string   "membership"
+    t.string   "contractor_type"
+    t.string   "about_title"
+    t.string   "about_content"
+    t.string   "credentials"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instant_message"
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "reset_code",               :limit => 50
     t.datetime "reset_code_at"
+    t.datetime "deleted_at"
     t.string   "facebook_id"
     t.string   "token"
-    t.string   "created_by"
     t.string   "role",                     :limit => 25
     t.string   "activation_code",          :limit => 100
     t.datetime "activated_at"
@@ -161,16 +175,6 @@ ActiveRecord::Schema.define(:version => 20130524022013) do
     t.integer  "photo_file_size"
     t.datetime "created_at",                                                 :null => false
     t.datetime "updated_at",                                                 :null => false
-    t.datetime "deleted_at"
-    t.string   "membership"
-    t.string   "contractor_type"
-    t.string   "about_title"
-    t.string   "about_content"
-    t.string   "credentials"
-    t.string   "website"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "instant_message"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
