@@ -72,7 +72,8 @@ class UsersController < ApplicationController
       User.transaction do
         @user.activate!
       end
-      flash[:notice] = "Your account is activated! Please log in to continue."
+      session[:user_id] = @user.id
+      flash[:notice] = "Your account is now active!"
       redirect_to root_url
     when @user && @user.active?
       flash[:notice] = "Your account is already activated. Please sign in to continue."
@@ -146,19 +147,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
+    if @user.pending?
       if @user.update_attributes(params[:user])
-        if @user.pending?
-          flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
-          session[:user_id] = nil
-          redirect_to root_url
-        else
+        flash[:notice] = "Thanks for signing up! An email has been sent to #{@user.email} with instructions on how to immediately activate your account."
+        session[:user_id] = nil
+        redirect_to root_url
+      else
+        flash[:error] = "There was a problem with your info, please try again."
+        redirect_to (:back)
+      end
+    else
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
           format.html { redirect_to((:back), :notice => 'Your account has been updated!') }
           format.json { respond_with_bip(@user) }
-        end
-      else
-    	  flash[:error] = "There was a problem with your info, please try again."
-        unless @user.pending?
+        else
+    	    format.html { redirect_to((:back), :notice => 'There was a problem with your info, please try again.') }
           format.json { respond_with_bip(@user) }
         end
       end

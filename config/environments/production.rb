@@ -65,5 +65,5 @@ Jobbidit::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  SITE_URL_HOST = "jobbidit.herokuapp.com"
+  SITE_URL_HOST = "scoutjack.herokuapp.com"
 end

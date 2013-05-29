@@ -1,12 +1,12 @@
 class UserMailer < ActionMailer::Base
-  default from: "support@homefixt.herokuapp.com"
+  default from: "support@scoutjack.herokuapp.com"
 
   def activation(user)
     @url  = activate_url(:host => SITE_URL_HOST, :id => user.id, :activation_code => user.activation_code)
     @user = user
     mail(
         :to => ["#{user.email}"],
-        :subject => "JobBidIt: Please activate your new account.")
+        :subject => "ScoutJack: Please activate your new account.")
   end
 
   def welcome(user)
@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
       @url  = reset_url(:id => user.id, :reset_code => user.reset_code, :host => SITE_URL_HOST)
       mail(
         :to => ["#{user.email}"],
-        :subject => "Welcome to JobBidIt!")
+        :subject => "Welcome to ScoutJack!")
     end
   end
 
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
       @url        = reset_url(:id => user.id, :reset_code => user.reset_code, :host => SITE_URL_HOST)
       mail( 
           :to => ["#{user.email}"],
-          :subject => "JobBidit: Reset your password.")
+          :subject => "ScoutJack: Reset your password.")
     end
   end
 end

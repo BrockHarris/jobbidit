@@ -1,9 +1,9 @@
 class ContactMailer < ActionMailer::Base
-  default :from => "support@homefixt.herokuapp.com"
+  default :from => "support@scoutjack.herokuapp.com"
   default :to => "stsikder@gmail.com"
 
   def new_message(message)
     @message = message
-    mail(:subject => "JobBidit Inquiry: #{message.subject}")
+    mail(:subject => "ScoutJack Inquiry: #{message.subject}")
   end
 end
