@@ -36,7 +36,6 @@ Jobbidit::Application.routes.draw do
   resources :bids
   resources :pastworks
   resources :jobtypes
-  resources :comments
   resources :jobphotos
   resources :users 
 

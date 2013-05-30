@@ -7,21 +7,11 @@
 
 <p>
 
-</p>
 
 <strong>Posted by:</strong><br/>
 <%= link_to @job.user.username, @job.user %>
 <p/>
 
-
-
-
-<h4>-Comment on Job-</h4>
-<%= render 'comments/comment_form' %>
-<p/>
-
-<h4>Comments:</h4>
-<%= render 'comments/job_comments' %><p/>
 
 <% if current_user.role == 'provider' && @job.open == true %>
 	<% unless current_user == @job.user %>

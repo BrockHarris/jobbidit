@@ -1,4 +1,15 @@
+<script type="text/javascript">
+  $(function(){
+    $('#flash').delay(2000).fadeIn('normal', function() {
+      $(this).delay(2000).fadeOut();
+    });
+  });
+</script>
+
 <header class="whiteband">
+  <% flash.each do |key, value| %>
+    <div id="flash" class="alert alert-info msg_format"><%= value %></div>
+  <% end %>
   <section class="container">
     <section class="row">
       <section class="span4">
@@ -113,9 +124,5 @@
     <% end %>
   </section>
 </header>
-
-<% flash.each do |key, value| %>
-  <div id="flash" class="alert alert-info msg_format"><%= value %></div>
-<% end %>
 
 <%= render 'pages/dashboard' if current_user && current_user.state != 'pending' %>

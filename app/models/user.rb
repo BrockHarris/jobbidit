@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :pastworks
   has_many :bids
-  has_many :comments
   has_many :pmessages, :dependent => :destroy
   has_many :received_pmessages, :foreign_key=>"receiver_id", :class_name=>"Pmessage", :dependent=>:destroy
   has_attached_file :photo,

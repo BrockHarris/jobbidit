@@ -11,8 +11,8 @@ class Job < ActiveRecord::Base
   belongs_to :jobtype
 
   has_many :bids, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
   has_many :jobphotos, :dependent => :destroy
+  has_many :pmessages, :dependent => :destroy
   
   accepts_nested_attributes_for :jobphotos, :allow_destroy => true
 
