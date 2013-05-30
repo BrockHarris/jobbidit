@@ -11,6 +11,7 @@ gem 'aws-s3'
 gem 'aws-sdk'
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

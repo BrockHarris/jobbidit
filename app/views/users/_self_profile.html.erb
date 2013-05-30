@@ -1,6 +1,6 @@
 <section class="profile-view">
 	
-	<% if current_user.city.empty? || current_user.state.empty? %>
+	<% if current_user.city.blank? || current_user.state.blank? %>
 		<section class="improve-profile">
 			<h3>Welcome, <%= current_user.firstname %>. Let's improve your profile</h3>
 			<h1>Where are you located?</h1>
