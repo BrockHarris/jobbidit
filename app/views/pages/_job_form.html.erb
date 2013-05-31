@@ -16,5 +16,11 @@
   <strong>Job category:</strong><br/>
   <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
 
+  <h4>Add photos:</h4>
+  <%= f.fields_for :jobphotos do |builder| %>
+    <%= render "jobphoto_fields", :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add another photo", f, :jobphotos %></p>
+
   <%= f.submit 'Post' %>
 <% end %>

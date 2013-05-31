@@ -1,2 +1,21 @@
 <h3>Edit your job:</h3>
-<%= render 'pages/job_form' %>
+<%= form_for @job, :html=> { :multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.text_field :title, :placeholder => "Title" %><br/>
+  <%= f.text_field :description, :placeholder => "Description" %> <br/>
+
+  <strong>Job listing duration:</strong><br/>
+  <%= f.select :duration, [['1 Day','1'],['3 Days','3'],['7 Days','7'],['14 Days','14'],['30 Days','30']] %><br/>
+
+  <strong>Job start time:</strong><br/>
+  <%= f.text_field :start_date, class: 'release_date' %><br/>
+
+  <strong>Job deadline:</strong><br/>
+  <%= f.text_field :expire_date, class: 'release_date' %><br/>
+
+  <strong>Job category:</strong><br/>
+  <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
+
+  <%= f.submit 'Save' %>
+<% end %>
