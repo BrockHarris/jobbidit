@@ -72,6 +72,8 @@ GEM
     json (1.7.7)
     jwt (0.1.5)
       multi_json (>= 1.0)
+    kalendae_assets (0.2.1)
+      rails (~> 3.1)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -190,6 +192,7 @@ DEPENDENCIES
   faker
   jquery-rails
   json
+  kalendae_assets
   kaminari
   omniauth
   omniauth-facebook

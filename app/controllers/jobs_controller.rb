@@ -30,8 +30,6 @@ class JobsController < ApplicationController
 		@bid = Bid.new
 		@bidder = current_user
 		@bids = @job.bids
-		@comment = Comment.new
-		@comments = @job.comments
 		@jobphotos = Jobphoto.where(:job_id => @job.id)
 	end
 

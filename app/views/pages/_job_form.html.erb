@@ -5,13 +5,13 @@
   <%= f.text_field :description, :placeholder => "Description" %> <br/>
 
   <strong>Job listing duration:</strong><br/>
-  <%= f.select :duration, [['12 Hours','12'],['1 Day','24'],['2 Days','48']] %><br/>
+  <%= f.select :duration, [['1 Day','1'],['3 Days','3'],['7 Days','7'],['14 Days','14'],['30 Days','30']] %><br/>
 
   <strong>Job start time:</strong><br/>
-  <%# f.datepicker "start_date" %><br/>
+  <%= f.text_field :start_date, class: 'release_date' %><br/>
 
-  <strong>Job end time:</strong><br/>
-  <%# f.datepicker "expire_date" %><br/>
+  <strong>Job deadline:</strong><br/>
+  <%= f.text_field :expire_date, class: 'release_date' %><br/>
 
   <strong>Job category:</strong><br/>
   <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
