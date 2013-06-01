@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   searchable do
-    text :email, :firstname, :lastname, :city, :state, :zip, :username
+    text :email, :firstname, :lastname, :city, :us_state, :zip, :username
   end
 
   has_many :authentications, :dependent => :destroy
@@ -26,9 +26,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :mode
   attr_accessible :email, :facebook_id, :token, :username, :password, :mode, :password_confirmation, :firstname, :lastname, 
-                  :address, :city, :state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership,
+                  :address, :city, :us_state, :zip, :phone, :role, :photo, :activation_code, :activated_at, :admin, :membership,
                   :contractor_type, :verified, :about_title, :about_content, :credentials, :website, :facebook, :twitter,
-                  :instant_message
+                  :instant_message, :state
 
   before_save :prepare_password
 

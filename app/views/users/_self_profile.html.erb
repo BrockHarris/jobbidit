@@ -8,7 +8,7 @@
 			<%= form_for @user, :html=> { :multipart => true} do |f| %>
       	<%= render 'shared/error_messages', :object => f.object %>
       	<%= f.text_field :city, :placeholder => "Add City", :id => "postal-code" %>
-      	<%= f.select :state, us_states, :id => "city" %>
+      	<%= f.select :us_state, us_states, :id => "city" %>
 				<div class='clearfix'></div>					
 				<%= f.submit 'Save' %>
 			<% end %>
@@ -35,7 +35,8 @@
 				</h3>
 				<h3>
 					<span class="pen"></span>
-					<%= best_in_place @user, :city, :nil=>"Your city" %>, <%= best_in_place @user, :state, :nil=>"State" %>
+					<%= best_in_place @user, :city, :nil=>"Your city" %>, 
+					<%= best_in_place @user, :us_state, :type => :select, :collection => us_states, :nil=>"State" %>
 				</h3>
 				<h3>
 					<span class="pen"></span>
