@@ -7,6 +7,7 @@ namespace :db do
       user = User.new(
         :username => username,
         :role => 'provider',
+        :state => 'active',
         :password => 'password',
         :password_confirmation => 'password',
         :verified => false,
@@ -14,7 +15,7 @@ namespace :db do
         :lastname => Faker::Name.last_name,
         :contractor_type => Faker::Company.name,
         :city => Faker::Address.city,
-        :state => Faker::Address.state_abbr,
+        :us_state => Faker::Address.state_abbr,
         :email => Faker::Internet.email,
         :phone => Faker::PhoneNumber.phone_number,
         :website => Faker::Internet.domain_name,
