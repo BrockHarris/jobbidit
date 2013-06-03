@@ -4,7 +4,7 @@ class Job < ActiveRecord::Base
     text :title, :description, :category
   end
 
-  after_save :set_job_location ##IP##
+  #after_save :set_job_location ##IP##
 
   attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, 
                   :jobphotos_attributes, :bid_count, :start_date
@@ -27,9 +27,9 @@ class Job < ActiveRecord::Base
     connection.execute("UPDATE jobs SET bid_count = #{bid_count} WHERE id = #{self.id}")
   end
 
-  def set_job_location ###### IP #####
-    self.job.update_current_bid
-    current_bid = self.amount
-    connection.execute("UPDATE jobs SET current_bid = #{current_bid} WHERE id = #{self.job.id}")
-  end
+  #def set_job_location ###### IP #####
+    #self.job.update_current_bid
+    #current_bid = self.amount
+    #connection.execute("UPDATE jobs SET current_bid = #{current_bid} WHERE id = #{self.job.id}")
+  #end
 end  

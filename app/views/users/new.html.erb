@@ -7,22 +7,22 @@
 		  		<%= f.hidden_field :role, :value=> "placer" %>
 					<h5>Basic Info</h5>
 					<%= label_tag :firstname, 'First Name' %>	        		
-					<%= f.text_field :firstname, :id=>"sign-up-first-name" %>
+					<%= f.text_field :firstname %>
 		
 					<%= label_tag :lastname, 'Last Name' %>	        		
-					<%= f.text_field :lastname, :id=>"sign-up-last-name" %>
+					<%= f.text_field :lastname %>
 		
 					<%= label_tag :email, 'Email' %>	        		
-					<%= f.text_field :email, :id=>"sign-up-email" %>
+					<%= f.text_field :email %>
 
 					<%= label_tag :username, 'Username' %>	        		
-					<%= f.text_field :username, :id=>"sign-up-username" %>
+					<%= f.text_field :username %>
 		
 					<%= label_tag :password, 'Password' %>			        		
-				  <%= f.password_field :password, :id=>"sign-up-password" %>
+				  <%= f.password_field :password %>
 					
 					<%= label_tag :password_confirmation, 'Verify Password' %>	
-					<%= f.password_field :password_confirmation, :id=>"sign-up-password-verify" %>
+					<%= f.password_field :password_confirmation %>
 					<div class="clearfix"></div>
 					<%= f.submit 'Next', :class=>"next" %>
 		    <% end %>
