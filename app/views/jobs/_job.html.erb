@@ -1,11 +1,14 @@
 <tr>
-	<th><%= link_to job.title, job %></td> 
-  <td><%= job.category %></td>
+	<th><%= job.title %></td> 
   <td>Location, Area</td>
   <td>$150-$180</td> 
-  <td>
-  	<% if job.user = current_user %>
+  <% if job.user == current_user %>
+  	<td>
 			<%= link_to "Edit", edit_job_path(job) %> - <%= link_to "Delete", job, :method => :delete, :class=> :destroy %>
-		<% end %>
-	</td>
+		</td>
+	<% elsif current_user.role == 'provider' %>
+		<td class="hidden-phone">
+			<%= link_to "Bid on it!", job %>
+		</td>
+	<% end %>
 <tr>

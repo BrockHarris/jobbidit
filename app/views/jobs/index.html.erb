@@ -9,6 +9,11 @@
     <article class="span12">
       <div class="job-postings">
         <table>
+          <tr>
+            <th>Jobs in your field - <%= current_user.contractor_type %></th>
+            <th>Location</th>
+            <th>Budget</th>
+          </tr>
           <%= render @jobs %>
         </table>
       </div>

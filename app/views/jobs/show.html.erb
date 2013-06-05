@@ -1,6 +1,6 @@
 
 
-<% if @job.user = current_user %>
+<% if @job.user == current_user %>
 	<%= link_to "[Edit]", edit_job_path(@job) %> - <%= link_to "[Delete]", @job, :method => :delete, :class=> :destroy %><p/>
 <% end %>
 

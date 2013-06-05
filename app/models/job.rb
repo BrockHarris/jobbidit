@@ -7,7 +7,7 @@ class Job < ActiveRecord::Base
   #after_save :set_job_location ##IP##
 
   attr_accessible :title, :description, :user_id, :category, :current_bid, :duration, :expire_date, :open, :photo, 
-                  :jobphotos_attributes, :bid_count, :start_date
+                  :jobphotos_attributes, :bid_count, :start_date, :location
 
   belongs_to :user
   belongs_to :jobtype

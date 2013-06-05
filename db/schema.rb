@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531151153) do
+ActiveRecord::Schema.define(:version => 20130605204052) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130531151153) do
     t.boolean  "open",        :default => true
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.string   "location"
   end
 
   add_index "jobs", ["user_id", "category", "expire_date"], :name => "index_jobs_on_user_id_and_category_and_expire_date"
