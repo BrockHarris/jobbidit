@@ -1,13 +1,9 @@
-
-
 <% if @job.user == current_user %>
 	<%= link_to "[Edit]", edit_job_path(@job) %> - <%= link_to "[Delete]", @job, :method => :delete, :class=> :destroy %><p/>
 <% end %>
 
 
 <p>
-
-
 <strong>Posted by:</strong><br/>
 <%= link_to @job.user.username, @job.user %>
 <p/>
@@ -19,12 +15,6 @@
 		<%= render 'bids/bid_form' %><p/>
 	<% end %>
 <% end %>
-
-
-
-<h4>Bid History:</h4>
-<strong>Bid count:</strong> <%= @job.bid_count %> Bids
-
 
 <section class="row">
 		<article class="span12">

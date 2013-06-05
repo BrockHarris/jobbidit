@@ -16,5 +16,7 @@
   		<% end %>
 		<% end %>
 	</td>
-	<td class="hidden-phone"><%= link_to "Contact Provider", bid.user %></td>
+	<% if @job.user == current_user %>
+		<td class="hidden-phone"><%= link_to "Contact Provider", bid.user %></td>
+	<% end %>
 </tr>

@@ -14,7 +14,13 @@
   <%= f.text_field :expire_date, class: 'release_date' %><br/>
 
   <strong>Job category:</strong><br/>
-  <%= collection_select(:job, :category, @jobtypes, :name, :name) %>
+  <%= collection_select(:job, :category, @jobtypes, :name, :name) %><br/>
+
+  <strong>Budget Minimum:</strong><br/>
+  $ <%= f.text_field :budget_low %><br/>
+
+  <strong>Budget Maximum:</strong><br/>
+  $ <%= f.text_field :budget_high %><br/>
 
   <h4>Add photos:</h4>
   <%= f.fields_for :jobphotos do |builder| %>
