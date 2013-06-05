@@ -19,7 +19,6 @@
 							<tr>
 								<th><%= link_to job.title, job %></th>
 								<td><%= link_to pluralize(job.bids.count, "Bid"), job %></td>
-								<td><%= link_to "Edit", edit_job_path(job) %> · <%= link_to "Delete", job_path(job), :method=>:delete  %></td>
 							</tr>
 						<% end %>
 					</table>
